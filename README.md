@@ -23,6 +23,6 @@ New features should be logged as issues and then documented in the Wiki here: ht
 Developers should fork the repository of the software component in question and submit pull requests.
 
 ### Branching Model
-Xibo uses the [http://nvie.com/posts/a-successful-git-branching-model/](Gitflow Branching Model), we would therefore like to encourage any contributors to read and understand that model so you know where to branch from / submit a pull request to.
+Xibo uses the [Gitflow Branching Model](http://nvie.com/posts/a-successful-git-branching-model/), we would therefore like to encourage any contributors to read and understand that model so you know where to branch from / submit a pull request to.
 
 We do have a slight adjustment to the model to support bug fixes into past releases, in that our release/x.x.x branches will only be removed when a subsequent release in that series is made. This branch should be used for hot fixes into that release.
