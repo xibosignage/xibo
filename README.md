@@ -8,9 +8,9 @@ There is:
  - [Xibo CMS](https://github.com/xibosignage/xibo-cms)
  - Xibo for Chrome Player
  - Xibo for Windows Player
- - Xibo for Ubuntu Player
- - Xibo Manual
- - Xibo CMS UI Test Suite
+ - [Xibo for Ubuntu Player](https://github.com/xibosignage/xibo-pyclient)
+ - [Xibo Manual](https://github.com/xibosignage/xibo-manual)
+ - [Xibo CMS UI Test Suite](https://github.com/xibosignage/xibo-cms-tests)
  - Xibo Off-line Download Application
 
 ## Issues
