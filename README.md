@@ -1,6 +1,9 @@
 # Introduction
 Open Source Digital Signage released under the AGPLv3. Powerful Open Source Digital Signage content management system and Windows / Ubuntu display player software. See [http://xibo.org.uk](xibo.org.uk) for more information.
 
+## Releases
+We publish releases in the [CMS repository](https://github.com/xibosignage/xibo-cms/releases). You can download the source code and installer file from [this page](https://github.com/xibosignage/xibo-cms/releases).
+
 ## Repository Structure
 This software is split across several repositories which mirror the different software components.
 
