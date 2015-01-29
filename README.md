@@ -9,7 +9,7 @@ This software is split across several repositories which mirror the different so
 
 There is:
  - [Xibo CMS](https://github.com/xibosignage/xibo-cms)
- - [Xibo for Windows Player]
+ - [Xibo for Windows Player](https://github.com/xibosignage/xibo-dotnetclient)
  - [Xibo for Ubuntu Player](https://github.com/xibosignage/xibo-pyclient) - [Discontinued](http://xibo.org.uk/2014/12/15/xibo-for-ubuntu-alpha-discontinuation-notice/)
  - [Xibo Manual](https://github.com/xibosignage/xibo-manual)
  - [Xibo CMS UI Test Suite](https://github.com/xibosignage/xibo-cms-tests)
