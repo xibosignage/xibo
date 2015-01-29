@@ -9,8 +9,7 @@ This software is split across several repositories which mirror the different so
 
 There is:
  - [Xibo CMS](https://github.com/xibosignage/xibo-cms)
- - Xibo for Chrome Player
- - Xibo for Windows Player
+ - [Xibo for Windows Player]
  - [Xibo for Ubuntu Player](https://github.com/xibosignage/xibo-pyclient) - [Discontinued](http://xibo.org.uk/2014/12/15/xibo-for-ubuntu-alpha-discontinuation-notice/)
  - [Xibo Manual](https://github.com/xibosignage/xibo-manual)
  - [Xibo CMS UI Test Suite](https://github.com/xibosignage/xibo-cms-tests)
@@ -22,8 +21,18 @@ Please track all issues in this repository here: https://github.com/xibosignage/
 ## Features
 New features should be logged as issues and then documented in the Wiki here: https://github.com/xibosignage/xibo/wiki
 
-## Developers
-Developers should fork the repository of the software component in question and submit pull requests.
+## Contributing
+We'd love to work with you and accept your contributions. For small changes like bug fixes, typos, etc. Please Fork us and submit a pull request with the details of what you have changed.
+
+For larger changes, you will have to electronically sign a statement that indicates two things:
+
+* You are willingly licensing your contributions under the terms of the open source license of the project that you're contributing to.
+
+* You are legally able to license your contributions as stated.
+
+This is called a Contributor Licence Agreement or "CLA" for short.
+
+The standard licence for Xibo is the [AGPLv3](LICENCE). For more information please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Branching Model
 Xibo uses the [Gitflow Branching Model](http://nvie.com/posts/a-successful-git-branching-model/), we would therefore like to encourage any contributors to read and understand that model so you know where to branch from / submit a pull request to.
