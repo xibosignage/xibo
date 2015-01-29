@@ -1,1 +1,1 @@
-Contributors who have signed the CLA - see [Contributing](../contributing) for more information.
+Contributors who have signed the CLA - see [Contributing](../CONTRIBUTING.md) for more information.

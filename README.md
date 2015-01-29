@@ -32,7 +32,7 @@ For larger changes, you will have to electronically sign a statement that indica
 
 This is called a Contributor Licence Agreement or "CLA" for short.
 
-The standard licence for Xibo is the [AGPLv3](LICENCE). For more information please see [CONTRIBUTING.md](CONTRIBUTING.md).
+The standard licence for Xibo is the [AGPLv3](LICENSE). For more information please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Branching Model
 Xibo uses the [Gitflow Branching Model](http://nvie.com/posts/a-successful-git-branching-model/), we would therefore like to encourage any contributors to read and understand that model so you know where to branch from / submit a pull request to.
