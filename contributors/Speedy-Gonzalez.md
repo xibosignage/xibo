@@ -1,4 +1,4 @@
-[2015-02-14]
+2015-02-14
 
 I hereby agree to the terms of the Contributors License
 Agreement, version 1.0, with MD5 checksum
