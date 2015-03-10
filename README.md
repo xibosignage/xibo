@@ -1,6 +1,9 @@
 # Introduction
 Open Source Digital Signage released under the AGPLv3. Powerful Open Source Digital Signage content management system and Windows / Ubuntu display player software. See [http://xibo.org.uk](xibo.org.uk) for more information.
 
+## Community
+If you are looking for somewhere to discuss Xibo or ask about something that is not a **verified** bug, please head over to our [Community Discussion Page](https://community.xibo.org.uk).
+
 ## Releases
 We publish releases in the [CMS repository](https://github.com/xibosignage/xibo-cms/releases). You can download the source code and installer file from [this page](https://github.com/xibosignage/xibo-cms/releases).
 
@@ -16,10 +19,10 @@ There is:
  - Xibo Off-line Download Application
 
 ## Issues
-Please track all issues in this repository here: https://github.com/xibosignage/xibo/issues
+Verified issues and bugs are tracked in [this repository](https://github.com/xibosignage/xibo/issues). Any general support or questions about unverified bugs, please open a topic on the [Community Discussion Page](https://community.xibo.org.uk).
 
 ## Features
-New features should be logged as issues and then documented in the Wiki here: https://github.com/xibosignage/xibo/wiki
+New features should be discussed and documented on the [Community Discussion Page](https://community.xibo.org.uk).
 
 ## Contributing
 We'd love to work with you and accept your contributions. For small changes like bug fixes, typos, etc. Please Fork us and submit a pull request with the details of what you have changed.
