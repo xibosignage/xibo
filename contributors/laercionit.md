@@ -1,0 +1,1 @@
+[2015-02-04]I hereby agree to the terms of the Contributors LicenseAgreement, version 1.0, with MD5 checksum803508fbda0042c0f94492005fc2cebef4b36d18.I furthermore declare that I am authorized and able to make thisagreement and sign this declaration.Signed,Laercio Mendonça https://github.com/laercionit
