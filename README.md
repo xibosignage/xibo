@@ -1,5 +1,5 @@
 # Introduction
-Open Source Digital Signage released under the AGPLv3. Powerful Open Source Digital Signage content management system and Windows display player software. See [http://xibo.org.uk](xibo.org.uk) for more information.
+Open Source Digital Signage released under the AGPLv3. Powerful Open Source Digital Signage content management system and Windows display player software. See [http://xibo.org.uk](http://xibo.org.uk) for more information.
 
 ## Community
 If you are looking for somewhere to discuss Xibo or ask about something that is not a **verified** bug, please head over to our [Community Discussion Page](https://community.xibo.org.uk).
