@@ -20,7 +20,7 @@ There is:
 
 
 ## Contributing
-We would be delighed to accept contributions to the project - please refer to the [Contributing to Xibo](https://community.xibo.org.uk/t/contributing-to-xibo/3979) topc on our community site for further information.
+We would be delighted to accept contributions to the project - please refer to the [Contributing to Xibo](https://community.xibo.org.uk/t/contributing-to-xibo/3979) topic on our community site for further information.
 
 # History
 Xibo has been under development since 2008 and has had many successful releases. Prior to 1.7.0 our project was hosted on [Launchpad](https://launchpad.net/xibo/).
