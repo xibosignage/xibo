@@ -6,10 +6,10 @@ Version 1.0
 
 ### Preface
 
-This Agreement is between You, the Users, the Contributors, and Spring Signage Ltd. The intent of the Agreement is to clarify your responsibilities as a Contributor.
+This Agreement is between You, the Users, the Contributors, and Xibo Signage Ltd. The intent of the Agreement is to clarify your responsibilities as a Contributor.
 
 The Agreement is meant to protect You, the Users, the Contributors,
-and Spring Signage Ltd from the malicious misdeeds of others.
+and Xibo Signage Ltd from the malicious misdeeds of others.
 The Agreement is *not* intended to restrict how You use Your own
 Contributions.
 
@@ -25,10 +25,10 @@ and the singular shall include the plural.
 
 2. "You" / "Your" &mdash; The individual signing this Agreement.
 
-3. "Spring Signage Ltd" &mdash; The company which manages the
-   Projects. The company's website is at <http://springsignage.com/>.
+3. "Xibo Signage Ltd" &mdash; The company which manages the
+   Projects. The company's website is at <https://xibo.org.uk/>.
 
-4. "Project" &mdash; Open source projects being managed by Spring Signage Ltd. The Projects may all be found at
+4. "Project" &mdash; Open source projects being managed by Xibo Signage Ltd. The Projects may all be found at
    <https://github.com/xibosignage> with an overview at
    <https://github.com/xibosignage/xibo>.
 
@@ -61,7 +61,7 @@ When You provide a Contribution to a Project:
 * You license that Contribution under the terms of the
   license of that Project. More specifically, You grant an irrevocable
   license for Your Contribution to the Users, the Contributors, and
-  Spring Signage Ltd.
+  Xibo Signage Ltd.
 
 * You assert that You have the authority and are able to license Your
   Contribution under the license of that Project.
@@ -78,5 +78,5 @@ Furthermore:
 
 * If You become aware of a problem with any of Your Contributions or
   with the fact that You have signed this Agreement, then You agree to
-  inform Spring Signage Ltd about the problem, without any undue
+  inform Xibo Signage Ltd about the problem, without any undue
   delay.
