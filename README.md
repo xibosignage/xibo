@@ -11,19 +11,17 @@ We publish releases in the [CMS repository](https://github.com/xibosignage/xibo-
 This software is split across several repositories which mirror the different software components.
 
 There is:
- - [Xibo CMS](https://github.com/xibosignage/xibo-cms)
- - [Xibo for Windows Player](https://github.com/xibosignage/xibo-dotnetclient)
- - [Xibo Message Relay - XMR](https://github.com/xibosignage/xibo-xmr)
- - [Xibo for Ubuntu Player](https://github.com/xibosignage/xibo-pyclient) - [Discontinued](http://xibo.org.uk/2014/12/15/xibo-for-ubuntu-alpha-discontinuation-notice/)
- - [Xibo Manual](https://github.com/xibosignage/xibo-manual)
- - [Xibo CMS UI Test Suite](https://github.com/xibosignage/xibo-cms-tests)
+ - [Xibo](https://github.com/xibosignage/xibo) - for historical reasons we have this central repository to manage project Issues.
+ - [Xibo Docker](https://github.com/xibosignage/xibo-docker) - docker containers for our content management system
+ - [Xibo CMS](https://github.com/xibosignage/xibo-cms) - the content management system
+ - [Xibo for Windows Player](https://github.com/xibosignage/xibo-dotnetclient) - the windows player
+ - [Xibo for Linux](https://github.com/xibosignage/xibo-linux) - the linux player (we need help with this player)
+ - [Xibo Interactive](https://github.com/xibosignage/xibo-interactive-control) - a player side library for interactive control
+ - [Xibo Message Relay - XMR](https://github.com/xibosignage/xibo-xmr) - Xibo Message Relay, a component of the CMS
+ - [Xibo Support Library](https://github.com/xibosignage/support) - a small support library for doing common things in PHP
+ - [Xibo Manual](https://github.com/xibosignage/xibo-manual) - the user manual
+ - [PHP SDK for the CMS API](https://github.com/xibosignage/oauth2-xibo-cms) - league/oauth2 client for our CMS API
 
 
 ## Contributing
 We would be delighted to accept contributions to the project - please refer to the [Contributing to Xibo](https://community.xibo.org.uk/t/contributing-to-xibo/3979) topic on our community site for further information.
-
-# History
-Xibo has been under development since 2008 and has had many successful releases. Prior to 1.7.0 our project was hosted on [Launchpad](https://launchpad.net/xibo/).
-
-## Release History
-![Release History](release-history.png)
