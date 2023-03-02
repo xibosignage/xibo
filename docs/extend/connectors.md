@@ -6,7 +6,7 @@ title: "Connectors - Extend Xibo"
 
 # Connectors
 
->  NOTE: The foundations for connectors have been implemened in v3.1 of Xibo and will be extended and documented as we move into Xibo v4.
+>  NOTE: The foundations for connectors have been implemented in v3.1 of Xibo and will be extended and documented as we move into Xibo v4.
 
 Connectors allow developers to easily hook into the various events raised by Xibo's event system. In `v4` they will also be able to provide data for widgets. They are shown on the "Applications" page, and allow a user to enable/disable as well as provide settings such as API keys.
 
