@@ -19,6 +19,9 @@ Xibo separates widget creation into two parts, the Module and then optionally th
 
 Properties in the module will be shown on a "configure" tab in the Layout Editor, and properties in the template will be shown on an "appearance" tab.
 
+Modules which are expected to supply data have the `dataType` property set. Xibo has some built in datatypes, such as article, social media, event, etc, but if these do not match the module it is possible to add new data types via XML.
+
+
 ## What do you want to create?
 
 | I want to...                                                     | ...you need a                                                                                                                                                         |
@@ -44,8 +47,10 @@ These files are located in the following places:
 |---------------------|----------------------------------------------------------|
 | Core module XML     | `/modules`                                               |
 | Core template XML   | `/modules/templates`                                     |
+| Core datatype XML   | `/modules/datatypes`                                     |
 | Custom module XML   | `/custom/modules`                                        |
 | Custom template XML | `/custom/modules/templates`                              |
+| Custom datatype XML | `/custom/modules/datatypes`                              |
 | Custom PHP          | `/custom` (Autoloaded from the `\Xibo\Custom` namespace) |
 
 ## 1. XML definitions
@@ -302,7 +307,6 @@ Or as an array of items:
 ```
 
 ### 1.6. Assets
-
 When assets are required for the module, they can be added to the `assets` node.
 
 | Element | Type  | Description                       |
@@ -319,6 +323,27 @@ When assets are required for the module, they can be added to the `assets` node.
 | `path`    | string | Path to the asset.      |         | `/modules/assets/image.png` |
 
 And then the asset can be referenced in the module with the `[[assetId=newImage]]` syntax.
+
+### 1.7. Data Type
+Each `datatype.xml` file should have a top level node called `<dataTypes>`, inside which is each `<dataType>` node.
+
+| Element  | Type     | Description                      | Options | Sample value |
+|----------|----------|----------------------------------|---------|--------------|
+| `id`     | string   | A unique ID for the datatype.    |         | `currency`   |
+| `name`   | string   | A friendly name for the datatype |         | Currency     |
+| `fields` | Fields[] | A array of fields                |         |              |
+
+#### 1.7.1. Field
+| Element | Type   | Description             | Options | Sample value                           |
+|---------|--------|-------------------------|---------|----------------------------------------|
+| `title` | string | The title of this field |         | The time this quote was last refreshed |
+
+#### 1.7.1. Field Attributes
+| Attribute | Type   | Description                                   | Sample value                  |
+|-----------|--------|-----------------------------------------------|-------------------------------|
+| `id`      | string | A unique ID for this field (used in widgets)  | time                          | 
+| `type`    | string | The data type this field should be treated as | number, text, datetime, image | 
+
 
 ## 2. Saving, previewing and generating HTML
 
