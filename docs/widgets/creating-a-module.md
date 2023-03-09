@@ -315,12 +315,13 @@ When assets are required for the module, they can be added to the `assets` node.
 
 #### Asset
 
-| Attribute | Type   | Description             | Options | Sample value                |
-|-----------|--------|-------------------------|---------|-----------------------------|
-| `id`      | string | ID of the asset.        |         | `newImage`                  |
-| `type`    | string | Type of the asset.      | `path`  | `path`                      |
-| `mime`    | string | Mime type of the asset. |         | `image/png`                 |
-| `path`    | string | Path to the asset.      |         | `/modules/assets/image.png` |
+| Attribute | Type    | Description                         | Options | Sample value                |
+|-----------|---------|-------------------------------------|---------|-----------------------------|
+| `id`      | string  | ID of the asset.                    |         | `newImage`                  |
+| `type`    | string  | Type of the asset.                  | `path`  | `path`                      |
+| `mime`    | string  | Mime type of the asset.             |         | `image/png`                 |
+| `path`    | string  | Path to the asset.                  |         | `/modules/assets/image.png` |
+| `cmsOnly` | boolean | Is this asset only used in the CMS? |         | true                        |
 
 And then the asset can be referenced in the module with the `[[assetId=newImage]]` syntax.
 
