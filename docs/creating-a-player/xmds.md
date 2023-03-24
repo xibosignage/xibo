@@ -34,7 +34,12 @@ The 3.0 CMS introduced 1 more
 
  - Report Faults (processed from 3.1 onward)
 
-The starred services communicate outside the collection interval because they are driven be events that occur during normal running of the player.
+The 4.0 CMS introduced 2 more
+
+ - Get Dependency
+ - Get Data
+
+The starred services usually communicate outside the collection interval because they are driven be events that occur during normal running of the player.
 
 
 
@@ -54,8 +59,11 @@ The API provides various schema versions:
  - v4 - for use by players 1.7
  - v5 - for use by players 1.8+
  - v6 - for use by players 3.0+
+ - v7 - for use by players 4.0+
 
-A `v3` player will only be allowed to connect if it has already been registered to the CMS. This encourages new players to be commissioned with the latest versions. v5 will allow v4 registrations but will prevent access to [XMR](xmr.html).
+Players which communicate using an older XMDS schema version will only be allowed to connect if it has already been registered to the CMS - new registrations are not allowed. This encourages new players to be commissioned with the latest versions.
+
+When older player are connected they do not support newer features.
 
 The XMDS schema version is only incremented when a breaking change is introduced.
 
@@ -82,7 +90,7 @@ Each collection interval a set of calls are made to the CMS - some of which can 
   1. Register Display
   2. Required Files
   3. Schedule
-  4. Get File / Resource
+  4. Get File / Resource / Get Dependencies / Get Data
   5. Media Inventory
   6. Submit Stats
   7. Submit Logs
@@ -94,15 +102,20 @@ The Windows Player calls `RegisterDisplay` during its configuration in the Playe
 
 Once registered the player may then call `RequiredFiles` and `Schedule`. It is important that all Layouts in the `Schedule` are checked for validity before they are shown as they will appear in `Schedule` and `RequiredFiles` at the same time and may not get have all their files downloaded.
 
-Upon a successful call to `RequiredFiles` the Player must parse the response and queue a `GetFile` request for each layout, media and/or resource *required file*.
+Upon a successful call to `RequiredFiles` the Player must parse the response and queue a request for each layout, media and/or resource *required file*. Depending on the file type and CMS configuration files may be requested via:
+ - HTTP
+ - `GetFile`
+ - `GetResource`
+ - `GetDependency`
+ - `GetData`
 
 Upon a successful call to `Schedule` the Player must parse the response and determine which Schedules should be put in rotation based on their `from` and `to` dates.
 
-Each time a `GetFile` call completes the Player should call `MediaInventory` with the status of each Required File vs. its cache of those files.
+Each time a file is successfully downloaded via one of the methods shown the Player should call `MediaInventory` with the status of each Required File vs. its cache of those files.
 
 Once complete the Player may submit its cached Stat/Log records to the CMS for processing.
 
-Introduced in Soap6 and processed from 3.1 CMS version onward `ReportFaults` allows Players to send a JSON string with details about the encountered problem.  
+Introduced in Soap6 and processed from 3.1 CMS version onward `ReportFaults` allows Players to send a JSON string with details about the encountered problem.
 
 ### Run Time
 
@@ -110,17 +123,21 @@ The run time calls occur outside the normal collection interval and are executed
 
 
 
-#### Resource Download
-
-When a Media item is shown on a Layout by the Player it may be necessary to get an updated set of "resource content". This content is CMS provided HTML that represents how the Player should display the Media. It should be downloaded and shown in a web view.
+#### HTML based widgets
+Many of Xibo's widgets are HTML based and should be shown in a web view on the player. The HTML is prepared by the CMS, listed in required files, and available to download via the `GetResource` endpoint.
 
 Resource content should always be cached locally so that the Player can decide the content is fresh or in the event the CMS is unavailable.
 
+##### Data
+Starting in CMS v4+ the HTML structure and any associated data are delivered separately. The HTML comes in a `.htm` file and the data in a `.json` file. The data files are listed separately in required files with a type of `widget`.
 
+The player can periodically request new data for any widgets which are actively being displayed. Many of the widgets will automatically refresh their data without reloading the whole widget.
+
+Note: If an older player connects to the CMS, the data will get embedded in the `.htm` file.
 
 #### Submit Screen shot
 
-The Player can submit a screen shot of the current output to the CMS.
+The Player can submit a screenshot of the current output to the CMS.
 
 
 
@@ -142,7 +159,7 @@ The Xibo in the Cloud rate limit requirements are documented against each method
 
 
 
-## Definition v4/v5/v6
+## Definition v4/v5/v6/v7
 
 The definition of the SOAP service can be automatically consumed from the WSDL at `//xmds.php?v={versionNumber}&wsdl`.
 
@@ -172,6 +189,10 @@ It takes the following parameters:
 
  - xmrChannel
  - xmrPubKey
+
+`v7` introduced 1 additional parameter:
+
+ - licenceResult
 
 It returns the following XML string:
 
@@ -210,6 +231,12 @@ Messages sent through XMR are encrypted using `openssl_seal` and should be decry
 Please see [here](software-triggers-using-the-api) for more information.
 
 
+#### Licence Result
+The `licenceResult` parameter has the following options:
+ - licensed: The player is fully licensed
+ - trial: The player is on a trial
+ - na: The player does not require a license, e.g. it is open source, etc
+
 
 ### RequiredFiles
 
@@ -225,9 +252,11 @@ It returns the following XML string:
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 <files>
+   <file type="dependency" id="493" size="40408" md5="c90a4c420dd010a5e95dedb8927a29e7" download="http" path="https://cdn/493" saveAs="weathericons-regular-webfont.woff"/>
    <file type="media" id="493" size="40408" md5="c90a4c420dd010a5e95dedb8927a29e7" download="xmds" path="weathericons-regular-webfont.woff" />
    <file type="layout" id="29" size="303" md5="5e6ef3b612b39c83bf8c5cf9f2a75ef5" download="xmds" path="29" code="layoutCode" />
    <file type="resource" id="29" layoutid="1" regionid="3" mediaid="5" updated="102984759" />
+   <file type="widget" id="29" />
 </files>
 ```
 
@@ -241,7 +270,7 @@ From CMS version 3.1 onward, an additional node `purge` will be present in the X
 
 Each `file` node contains the following attributes:
 
- - type: Either media, layout or resource
+ - type: Either media, layout, resource or widget
  - id: A unique ID for the file
 
 Layout and Media file nodes also contain:
@@ -255,12 +284,18 @@ Layout file nodes also contain:
 
  - code: An optional attribute indicating if this Layout has a Layout Code set (applicable from v3.0)
 
+Media and Dependency nodes may also contain:
+
+ - saveAs: The file name the player should use when saving the file to local storage
+
 Resource file nodes also contain:
 
  - layoutid: The layoutId that references this resource.
  - regionid: The regionId that references this resource.
  - mediaid: The mediaId that references this resource.
  - updated: A timestamp indicating the last time this resource was updated.
+
+Widget nodes are only output for players connecting to XMDS v7 and are used to request data. They do not have any additional properties.
 
 Each `item` in `purge` node contains following attributes:
  - id: Media ID set to be purged
@@ -278,7 +313,7 @@ The CMS supports downloading files over XMDS directly or over directly over HTTP
 
 HTTP downloads are only valid for one usage and are refreshed with a new `path` each time `RequiredFiles` is called after the CMS sees a change in content that would require the Player to download new media items. This means that RequiredFiles will ordinarily contain links to download content which are not valid any longer if the Player has reported to the CMS that it has downloaded those files successfully.
 
-When the download mode is `xmds` the Player should call `GetFile`.
+When the download mode is `xmds` the Player should call `GetFile`/`GetDependency` as appropriate.
 
 
 
@@ -286,7 +321,9 @@ When the download mode is `xmds` the Player should call `GetFile`.
 
 Resource files are downloaded using the `GetResource` call. The Player implementation is free to save these files with whatever name is most suitable. The Layout XML contains the layout, region and media Ids that can be used to return the relevant cached resource file.
 
+#### GetData (Data files for XMDS v7+)
 
+Data files are downloaded using the `GetData` endpoint. They should be saved in the format of `<id>.json` and will be referenced by the associated resource file via the local webserver. 
 
 ### GetFile
 
@@ -333,7 +370,7 @@ The XML structure for media inventory is:
 
 ``` xml
 <files>
-	<file type="media|layout|resource" id="1" complete="0|1" md5="c90a4c420dd010a5e95dedb8927a29e7" lastChecked="1284569347" />
+	<file type="media|layout|resource|dependency|widget" id="1" complete="0|1" md5="c90a4c420dd010a5e95dedb8927a29e7" lastChecked="1284569347" />
 </files>
 ```
 
@@ -605,13 +642,13 @@ Properties supported by `status` are:
 
 ### SubmitScreenShot
 
-The `SubmitScreenShot` method call is used by the Player to send a screen shot of the current playback to the CMS. The instruction to send a screen shot appears in the `RegisterDisplay` call settings.
+The `SubmitScreenShot` method call is used by the Player to send a screenshot of the current playback to the CMS. The instruction to send a screenshot appears in the `RegisterDisplay` call settings.
 
 It takes the following parameters:
 
  - serverKey
  - hardwareKey
- - screenShot: Base64 encoded binary representation of the screen shot image.
+ - screenShot: Base64 encoded binary representation of the screenshot image.
 
 ### ReportFaults (Soap6)
 
