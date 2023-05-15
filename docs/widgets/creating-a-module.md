@@ -57,32 +57,48 @@ These files are located in the following places:
 
 ### 1.1. Module
 
-| Element           | Type         | Description                                                                                                                                                                                                                                       | Options          | Sample value        |
-|-------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|---------------------|
-| `id`              | string       | A unique ID for the module. Core modules are prefixed with `core-`. If you want to distribute your module it would be sensible to give it a prefix personal to you.                                                                               |                  | `core-embedded`     |
-| `name`            | string       | This is the friendly name of your module. It will be shown in the Layout Designer.                                                                                                                                                                |                  |                     |
-| `author`          | string       | You :), only shown on the Module admin page.                                                                                                                                                                                                      |                  |                     |
-| `description`     | string       | A description for the module, only used on the Module admin page.                                                                                                                                                                                 |                  |                     |
-| `class`           | string       | The class name of a Widget Provider, if needed. Not all modules need this, see below.                                                                                                                                                             |                  |                     |
-| `type`            | string       | This is the internal identifier for your module and is what gets recorded on the Layout XLF file and sent to the Player. This does not have to be unique, the CMS will choose the first available module of a particular type to render a Widget. |                  | `forecast`          |
-| `dataType`        | string       | If this module returns data, this is the data type of that data. It is also used to select the corresponding templates.                                                                                                                           |                  | `article`           |
-| `dataCacheKey`    | string       | Cache key for a module that returns data. Use with module properties between `%` characters, and separate multiple properties with a `_`.                                                                                                         |                  | `%id%_%name%`       |
-| `schemaVersion`   | integer      | Schema Version - can use used to determine different rendering from past versions.                                                                                                                                                                |                  | `1`                 |
-| `assignable`      | integer      | Should this module be assignable - used for Library modules.                                                                                                                                                                                      | `0`, `1`         | `1`                 |
-| `regionSpecific`  | integer      | Is this Module for the Library (0) or a Widget on a Layout (1)                                                                                                                                                                                    | `0`, `1`         | `1`                 |
-| `renderAs`        | string       | Render natively (`native`) or as HTML (`html`). If you are making a Player that will understand how to render the module set to `native`. Native modules must provide a preview stencil.                                                          | `html`, `native` | `html`              |
-| `defaultDuration` | integer      | When the user has declined to provide a duration for the Widget, what should the duration be.                                                                                                                                                     |                  | `60`                |
-| `legacyType`      | string       | If this module is a legacy module, use to match with old version of the module.                                                                                                                                                                   |                  | `weather`           |
-| `settings`        | Property     | Settings shown on the Module admin page.                                                                                                                                                                                                          |                  |                     |
-| `properties`      | Property     | Properties shown in the configuration panel of the Layout and Playlist editors.                                                                                                                                                                   |                  |                     |
-| `preview`         | Stencil      | A stencil for previewing. If not set, `stencil` will be used.                                                                                                                                                                                     |                  |                     |
-| `stencil`         | Stencil      | A stencil for the HTML to be sent to the Player                                                                                                                                                                                                   |                  |                     |
-| `onInitialize`    | CDATA string | JavaScript function run when a module is initialised, before data is returned.                                                                                                                                                                    |                  | `<![CDATA[ ... ]]>` |
-| `onParseData`     | CDATA string | JavaScript function running as data parser against each data item applicable when a `dataType` is present.                                                                                                                                        |                  | `<![CDATA[ ... ]]>` |
-| `onRender`        | CDATA string | JavaScript function run when a module is rendered, after data has been returned.                                                                                                                                                                  |                  | `<![CDATA[ ... ]]>` |
-| `onVisible`       | CDATA string | JavaScript function run right before a module is shown.                                                                                                                                                                                           |                  | `<![CDATA[ ... ]]>` |
-| `sampleData`      | CDATA string | A JSON data item to use as a sample                                                                                                                                                                                                               |                  | `<![CDATA[ ... ]]>` |
-| `assets`          | Asset        | A list of assets to be included in the module.                                                                                                                                                                                                    |                  |                     |
+| Element              | Type         | Description                                                                                                                                                                                                                                       | Options                      | Sample value        |
+|----------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|---------------------|
+| `id`                 | string       | A unique ID for the module. Core modules are prefixed with `core-`. If you want to distribute your module it would be sensible to give it a prefix personal to you.                                                                               |                              | `core-embedded`     |
+| `name`               | string       | This is the friendly name of your module. It will be shown in the Layout Designer.                                                                                                                                                                |                              |                     |
+| `author`             | string       | You :), only shown on the Module admin page.                                                                                                                                                                                                      |                              |                     |
+| `description`        | string       | A description for the module, only used on the Module admin page.                                                                                                                                                                                 |                              |                     |
+| `class`              | string       | The class name of a Widget Provider, if needed. Not all modules need this, see below.                                                                                                                                                             |                              |                     |
+| `compatibilityClass` | string       | The class name of a Widget Compatibility Interface, if needed. Not all modules need this, see below.                                                                                                                                              |                              |                     |
+| `type`               | string       | This is the internal identifier for your module and is what gets recorded on the Layout XLF file and sent to the Player. This does not have to be unique, the CMS will choose the first available module of a particular type to render a Widget. |                              |                     |
+| `dataType`           | string       | If this module returns data, this is the data type of that data. It is also used to select the corresponding templates.                                                                                                                           |                              | `article`           |
+| `dataCacheKey`       | string       | Cache key for a module that returns data. Use with module properties between `%` characters, and separate multiple properties with a `_`.                                                                                                         |                              | `%id%_%name%`       |
+| `schemaVersion`      | integer      | Schema Version - can use used to determine different rendering from past versions.                                                                                                                                                                |                              | `1`                 |
+| `assignable`         | integer      | Should this module be assignable - used for Library modules.                                                                                                                                                                                      | `0`, `1`                     | `1`                 |
+| `regionSpecific`     | integer      | Is this Module for the Library (0) or a Widget on a Layout (1)                                                                                                                                                                                    | `0`, `1`                     | `1`                 |
+| `renderAs`           | string       | Render natively (`native`) or as HTML (`html`). If you are making a Player that will understand how to render the module set to `native`. Native modules must provide a preview stencil.                                                          | `html`, `native`             | `html`              |
+| `defaultDuration`    | integer      | When the user has declined to provide a duration for the Widget, what should the duration be.                                                                                                                                                     |                              | `60`                |
+| `legacyType`         | LegacyType   | If this module is a legacy module, use to match with old version of the module.                                                                                                                                                                   |                              | `weather`           |
+| `thumbnail`          | string       | The assetId of an image to be used as the thumbnail                                                                                                                                                                                               |                              |                     |
+| `startWidth`         | integer      | The width of this widget when it is first added to a layout                                                                                                                                                                                       |                              | 500                 |
+| `startHeight`        | integer      | The height of this widget when it is first added to a layout                                                                                                                                                                                      |                              | 500                 |
+| `showIn`             | string       | Where should this module be shown?                                                                                                                                                                                                                | `both`, `playlist`, `layout` | `both`              |
+| `settings`           | Property     | Settings shown on the Module admin page.                                                                                                                                                                                                          |                              |                     |
+| `properties`         | Property     | Properties shown in the configuration panel of the Layout and Playlist editors.                                                                                                                                                                   |                              |                     |
+| `preview`            | Stencil      | A stencil for previewing. If not set, `stencil` will be used.                                                                                                                                                                                     |                              |                     |
+| `stencil`            | Stencil      | A stencil for the HTML to be sent to the Player                                                                                                                                                                                                   |                              |                     |
+| `onInitialize`       | CDATA string | JavaScript function run when a module is initialised, before data is returned.                                                                                                                                                                    |                              | `<![CDATA[ ... ]]>` |
+| `onParseData`        | CDATA string | JavaScript function running as data parser against each data item applicable when a `dataType` is present.                                                                                                                                        |                              | `<![CDATA[ ... ]]>` |
+| `onRender`           | CDATA string | JavaScript function run when a module is rendered, after data has been returned.                                                                                                                                                                  |                              | `<![CDATA[ ... ]]>` |
+| `onVisible`          | CDATA string | JavaScript function run right before a module is shown.                                                                                                                                                                                           |                              | `<![CDATA[ ... ]]>` |
+| `sampleData`         | CDATA string | A JSON data item to use as a sample                                                                                                                                                                                                               |                              | `<![CDATA[ ... ]]>` |
+| `assets`             | Asset        | A list of assets to be included in the module.                                                                                                                                                                                                    |                              |                     |
+
+#### 1.1.1. Legacy Type
+
+Legacy Type is used to indicate where a current module XML definition can serve an old/alternate module type. This is used on CMS upgrade or Layout import to convert a widget from its old state to a state compatible with this release.
+
+| Element     | Type   | Description                                                               | Options | Sample value             |
+|-------------|--------|---------------------------------------------------------------------------|---------|--------------------------|
+| `name`      | string | The legacy type of the module to match against                            |         | `countdown`              |
+| `condition` | string | An optional condition to match against the properties saved on the widget |         | `templateId==countdown3` |
+
+For example, the `countdown` module from v2/v3 has been split into 4 separate countdown modules in v4, each one serving a different "templateId" in the v3 version of that module. Adding a legacy type definition to the new module means that it will match and convert an old widget into the new module.
 
 ### 1.2. Template
 
@@ -92,21 +108,22 @@ These files are located in the following places:
 | `type`             | string       | The type of template.                                                                  | `static`, `element`, `stencil` | `static`            |
 | `title`            | string       | The title of the template used in the CMS to identify the template.                    |                                | `Template 1`        |
 | `dataType`         | string       | The data type of the template. Used to list the template in the corresponding modules. |                                | `article`           |
-| `thumbnail`        |              | To be added?                                                                           |                                |                     |
+| `thumbnail`        | string       | The assetId of an image to be used as the thumbnail                                    |                                |                     |
+| `showIn`           | string       | Where should this module be shown?                                                     | `both`, `playlist`, `layout`   | `both`              |
 | `properties`       | Property     | Same as the properties in the Module XML, but specific to the template.                |                                |                     |
 | `stencil`          | Stencil      | The stencil for the HTML of the template.                                              |                                |                     |
 | `onTemplateRender` | CDATA string | JavaScript function run when a template is rendered.                                   |                                | `<![CDATA[ ... ]]>` |
 
-> **Note:** Template `id` cannot contain hypens (`-`). This is because it will be used to generate a unique method name for `onTemplateRender`.
+> **Note:** Template `id` cannot contain hyphens (`-`). This is because it will be used to generate a unique method name for `onTemplateRender`.
 
 ### 1.3. Property
 
 Common structure for all properties.
 
-| Attribute | Description                   | Options                                   | Sample value |
-|-----------|-------------------------------|-------------------------------------------|--------------|
-| `id`      | A unique ID for the property. |                                           | `showHeader` |
-| `type`    | The type of property.         | See [Property Types](#133-property-types) | `checkbox`   |
+| Attribute | Description                                          | Options                                   | Sample value |
+|-----------|------------------------------------------------------|-------------------------------------------|--------------|
+| `id`      | A unique ID for the property.                        |                                           | `showHeader` |
+| `type`    | The type of property.                                | See [Property Types](#133-property-types) | `checkbox`   |
 
 | Element               | Type                 | Description                                                                                                        | Options | Sample value          |
 |-----------------------|----------------------|--------------------------------------------------------------------------------------------------------------------|---------|-----------------------|
@@ -170,25 +187,26 @@ Common structure for all properties.
 
 All properties have the options listed in the [Property](#13-property) section. They can be of the following types:
 
-| Name                    | Description             |
-|-------------------------|-------------------------|
-| `text`                  | Text input              |
-| `number`                | Number input            |
-| `checkbox`              | Checkbox                |
-| `dropdown`              | Dropdown                |
-| `color`                 | Color picker            |
-| `code`                  | Code editor             |
-| `richText`              | Rich text editor        |
-| `date`                  | Date picker             |
-| `hidden`                | Hidden input            |
-| `fontSelector`          | Font selector           |
-| `datasetSelector`       | Dataset selector        |
-| `datasetOrder`          | Dataset order           |
-| `datasetFilter`         | Dataset filter          |
-| `datasetColumnSelector` | Dataset column selector |
-| `header`                | Header                  |
-| `message`               | Message                 |
-| `divider`               | Divider                 |
+| Name                    | Description                                           |
+|-------------------------|-------------------------------------------------------|
+| `text`                  | Text input                                            |
+| `number`                | Number input                                          |
+| `checkbox`              | Checkbox                                              |
+| `dropdown`              | Dropdown                                              |
+| `color`                 | Color picker                                          |
+| `code`                  | Code editor                                           |
+| `richText`              | Rich text editor                                      |
+| `date`                  | Date picker                                           |
+| `hidden`                | Hidden input                                          |
+| `fontSelector`          | Font selector                                         |
+| `datasetSelector`       | Dataset selector                                      |
+| `datasetOrder`          | Dataset order                                         |
+| `datasetFilter`         | Dataset filter                                        |
+| `datasetColumnSelector` | Dataset column selector                               |
+| `header`                | Header                                                |
+| `message`               | Message                                               |
+| `divider`               | Divider                                               |
+| `connectorProperties`   | A dropdown/search filled with values from a connector |
 
 #### 1.3.4. Property Additional Options
 
@@ -196,9 +214,10 @@ These properties have additional options.
 
 ##### Dropdown
 
-| Attribute  | Type    | Type Description           | Options  | Sample value |
-|------------|---------|----------------------------|----------|--------------|
-| `multiple` | integer | Allow multiple selections. | `0`, `1` | `0`          |
+| Attribute  | Type    | Type Description                                     | Options           | Sample value |
+|------------|---------|------------------------------------------------------|-------------------|--------------|
+| `multiple` | integer | Allow multiple selections.                           | `0`, `1`          | `0`          |
+| `mode`     | string  | For a dropdown, should it be single or multi-select. | `single`, `multi` | `single`     |
 
 | Element        | Type   | Description               | Options | Sample value |
 |----------------|--------|---------------------------|---------|--------------|
@@ -218,23 +237,31 @@ These properties have additional options.
 
 ##### Code
 
-| Attribute          | Type    | Type Description          | Options                     | Sample value |
-|--------------------|---------|---------------------------|-----------------------------|--------------|
-| `variant`          | string  | Code editor variant.      | `html`, `css`, `javascript` | `javascript` |
-| `allowLibraryRefs` | integer | Allow library references. | `0`, `1`                    | `0`          |
+| Attribute           | Type   | Description                                     | Options                     | Sample value |
+|---------------------|--------|-------------------------------------------------|-----------------------------|--------------|
+| `variant`           | string | Code editor variant.                            | `html`, `css`, `javascript` | `javascript` |
+| `allowLibraryRefs`  | bool   | Allow library references.                       | `true`, `false`             | `false`      |
+| `allowAssetRefs`    | bool   | Allow asset references.                         | `true`, `false`             | `false`      |
+| `parseTranslations` | bool   | Parse the value for translations between pipes. | `true`, `false`             | `false`      |
 
 ##### Rich Text
 
-| Attribute          | Type    | Type Description          | Options  | Sample value |
-|--------------------|---------|---------------------------|----------|--------------|
-| `allowLibraryRefs` | integer | Allow library references. | `0`, `1` | `0`          |
+| Attribute           | Type | Description                                     | Options         | Sample value |
+|---------------------|------|-------------------------------------------------|-----------------|--------------|
+| `allowLibraryRefs`  | bool | Allow library references.                       | `true`, `false` | `false`      |
+| `allowAssetRefs`    | bool | Allow asset references.                         | `true`, `false` | `false`      |
+| `parseTranslations` | bool | Parse the value for translations between pipes. | `true`, `false` | `false`      |
 
 ##### Date
 
-| Attribute | Type   | Type Description | Options                             | Sample value |
-|-----------|--------|------------------|-------------------------------------|--------------|
-| `format`  | string | Date format.     |                                     | `YYYY-MM-DD` |
-| `variant` | string | Date variant.    | `date`, `time`, `datetime`, `month` | `date`       |
+| Attribute | Type   | Description   | Options                             | Sample value |
+|-----------|--------|---------------|-------------------------------------|--------------|
+| `format`  | string | Date format.  |                                     | `YYYY-MM-DD` |
+| `variant` | string | Date variant. | `date`, `time`, `datetime`, `month` | `date`       |
+
+##### Connector Properties
+
+A dropdown/search field which returns a set of options/values from a connector which handles the request.
 
 ### 1.4. Stencil
 

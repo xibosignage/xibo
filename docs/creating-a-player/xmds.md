@@ -321,9 +321,19 @@ When the download mode is `xmds` the Player should call `GetFile`/`GetDependency
 
 Resource files are downloaded using the `GetResource` call. The Player implementation is free to save these files with whatever name is most suitable. The Layout XML contains the layout, region and media Ids that can be used to return the relevant cached resource file.
 
-#### GetData (Data files for XMDS v7+)
+### GetData (Data files for XMDS v7+)
 
 Data files are downloaded using the `GetData` endpoint. They should be saved in the format of `<id>.json` and will be referenced by the associated resource file via the local webserver. 
+
+On download the data files should be parsed by JSON decoding and any new required files content contained in the `files` property assessed and downloaded via HTTP. Each file has the following properties:
+
+ - id
+ - size
+ - md5
+ - saveAs
+ - path
+
+These downloads will always be for media files, HTTP and the path a URL.
 
 ### GetFile
 
