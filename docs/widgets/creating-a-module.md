@@ -130,18 +130,23 @@ Common structure for all properties.
 | `title`               | string               | Used in the CMS to identify the property in the module configuration form.                                         |         | Header                |
 | `helpText`            | string               | Help text to be displayed in the module configuration form.                                                        |         | Show header on table? |
 | `default`             | string               | The default value for the property.                                                                                |         | `1`                   |
-| `visibility`          | Visibility           | Set the visibility of the property based a set of rules.                                                           |         |                       |
-| `validation`          | Validation           | Validation rules for the property when submitted.                                                                  |         |                       |
+| `visibility`          | Rule                 | Set the visibility of the property based a set of rules.                                                           |         |                       |
+| `validation`          | Rule                 | Set validation rules for the property when submitted and when status on the layout is reported.                    |         |                       |
 | `playerCompatibility` | Player Compatibility | Create a input helper to show the property compatibility with the players.                                         |         |                       |
 | `dependsOn`           | string               | ID of the property that this property depends on. Used to update the property when the target property is changed. |         | `showHeader`          |
 
-#### 1.3.1. Visibility
+#### 1.3.1. Rule
+Rules can be used for visibility and validation of properties. Rules consist of an array of tests which are evaluated individually (they are ANDed).
 
-| Element | Description      |
-|---------|------------------|
-| `test`  | Visibility test. |
+| Element    | Type    | Description                                                                                                      | Options | Default Value |
+|------------|---------|------------------------------------------------------------------------------------------------------------------|---------|---------------|
+| `onSave`   | boolean | Validation only: should the rule be applied when a property is saved?                                            |         | true          |
+| `onStatus` | boolean | Validation only: should the rule be applied when the widget status is assessed                                   |         | true          |
+| `message`  | string  | A string message to raise as an error, if empty a default message will be raised for the failing test/condition. |         |               |
+| `test`     | Test[]  | One or more tests to apply.                                                                                      |         |               |
 
-##### Visibility Test
+##### 1.3.1.1. Test
+A test is a set of conditions which are assessed in sequence. 
 
 | Attribute | Description | Options     | Sample value |
 |-----------|-------------|-------------|--------------|
@@ -151,27 +156,62 @@ Common structure for all properties.
 |-------------|-----------|----------------------------|
 | `condition` | Condition | Visibility test condition. |
 
-##### Visibility Test - Condition
+##### 1.3.1.2. Condition
 
-| Attribute | Type           | Description                         | Options                               | Sample value |
-|-----------|----------------|-------------------------------------|---------------------------------------|--------------|
-| `field`   | string         | Id of the property to test against. |                                       | `showHeader` |
-| `type`    | Condition Type | Type of condition test.             | `eq`, `neq`, `gt`, `egt`, `lt`, `elt` | `eq`         |
+| Attribute | Type           | Description             | Options                                                                                                     | Sample value |
+|-----------|----------------|-------------------------|-------------------------------------------------------------------------------------------------------------|--------------|
+| `field`   | string         | null                    | Id of the property to test against (required for visibility) / get the value from (optional for validation) |              | `showHeader` |
+| `type`    | Condition Type | Type of condition test. | See condition type                                                                                          | `eq`         |
 
-| Element   | Description                 |
-|-----------|-----------------------------|
-| nodeValue | Value to be tested against. |
+| Element   | Description                                                                            |
+|-----------|----------------------------------------------------------------------------------------|
+| nodeValue | Value to be tested against. (validation rules: leave empty for current property value) |
+
+Rules used as validation always test the current property value against the value resolved by the condition. Rules used as visibility tests always test the value in the `field` attribute against the value in the node. 
+
+For rules used as validation this means that when a field name is provided it is the value of that field which is used to test **against** the current property value. For example:
+
+A rule which ensures that the current property value is required and is of type uri.
+```xml
+<rule>
+    <test type="and">
+        <condition type="required"></condition>
+        <condition type="uri"></condition>
+    </test>
+</rule>
+```
+
+A rule which ensures that the current property value is less than or equal to the duration.
+```xml
+<rule message="Warning duration needs to be lower than the widget duration.">
+    <test type="and">
+        <condition field="duration" type="lte"></condition>
+    </test>
+</rule>
+```
+
+Rules which need a comparison value such as `gt` must either have a field to get the comparison value from, or a value in the condition.
+
+```xml
+<rule message="Warning duration needs to be lower than 10">
+    <test type="and">
+        <condition type="lt">10</condition>
+    </test>
+</rule>
+```
 
 ##### Condition Type
 
-| Name  | Description              |
-|-------|--------------------------|
-| `eq`  | Equal to                 |
-| `neq` | Not equal to             |
-| `gt`  | Greater than             |
-| `egt` | Greater than or equal to |
-| `lt`  | Less than                |
-| `elt` | Less than or equal to    |
+| Name        | Description              |
+|-------------|--------------------------|
+| `eq`        | Equal to                 |
+| `neq`       | Not equal to             |
+| `gt`        | Greater than             |
+| `gte`       | Greater than or equal to |
+| `lt`        | Less than                |
+| `lte`       | Less than or equal to    |
+| `contains`  | Value contains           |
+| `ncontains` | Value does not contain   |
 
 #### 1.3.2. Player Compatibility
 
