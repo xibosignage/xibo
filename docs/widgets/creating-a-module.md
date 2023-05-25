@@ -35,11 +35,11 @@ Modules which are expected to supply data have the `dataType` property set. Xibo
 
 ## Hello World...
 
-It is useful to start with a simple example. Here it is, the obligatory [hello world example](hello-world.md).
+It is useful to start with a simple example. Here it is, the obligatory [hello world example](hello-world).
 
 ## File locations
 
-Xibo's module system uses XML and where necessary for data retrieval, PHP files.
+Xibo's module system uses XML, and where necessary PHP files for data retrieval, complex validation and upgrading.
 
 These files are located in the following places:
 
@@ -53,7 +53,9 @@ These files are located in the following places:
 | Custom datatype XML | `/custom/modules/datatypes`                              |
 | Custom PHP          | `/custom` (Autoloaded from the `\Xibo\Custom` namespace) |
 
+
 ## 1. XML definitions
+Section 1 contains XML definitions for the module and template XML files.
 
 ### 1.1. Module
 

@@ -26,8 +26,9 @@ These documents are ordered such that more common activities are discussed first
 
 Full disclaimer, we are not lawyers or experts in software law! If you have any doubts always speak to a professional.
 
-Xibo is open source and that has some implications for certain activities. As a general rule if you're entering code into the CMS via the user interface, uploading as package HTML, sending a webhook or connecting via the API you are doing so at "arms length" and you can licence your code as you wish. If you're developing a theme, a custom module or extending Xibo then your code does fall under the AGPLv3.
+Xibo is open source and that has some implications for certain activities. As a general rule if you're entering code into the CMS via the user interface, uploading as package HTML, sending a webhook, developing a module/module template using only the XML definitions supported by the CMS or connecting via the API you are doing so at "arms length" and you can licence your code as you wish.
 
+If you're developing a theme, a custom module which uses a PHP class, a Connector, or extending Xibo then your code does fall under the AGPLv3.
 
 
 ### A note on contributing
