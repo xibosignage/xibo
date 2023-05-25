@@ -252,7 +252,7 @@ It returns the following XML string:
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 <files>
-   <file type="dependency" id="493" size="40408" md5="c90a4c420dd010a5e95dedb8927a29e7" download="http" path="https://cdn/493" saveAs="weathericons-regular-webfont.woff"/>
+   <file type="dependency" id="493" size="40408" md5="c90a4c420dd010a5e95dedb8927a29e7" download="http" path="https://cdn/493" saveAs="weathericons-regular-webfont.woff" fileType="asset" />
    <file type="media" id="493" size="40408" md5="c90a4c420dd010a5e95dedb8927a29e7" download="xmds" path="weathericons-regular-webfont.woff" />
    <file type="layout" id="29" size="303" md5="5e6ef3b612b39c83bf8c5cf9f2a75ef5" download="xmds" path="29" code="layoutCode" />
    <file type="resource" id="29" layoutid="1" regionid="3" mediaid="5" updated="102984759" />
@@ -271,7 +271,7 @@ From CMS version 3.1 onward, an additional node `purge` will be present in the X
 Each `file` node contains the following attributes:
 
  - type: Either media, layout, resource or widget
- - id: A unique ID for the file
+ - id: An ID for the file (unique for all file types except dependency)
 
 Layout and Media file nodes also contain:
 
@@ -287,6 +287,12 @@ Layout file nodes also contain:
 Media and Dependency nodes may also contain:
 
  - saveAs: The file name the player should use when saving the file to local storage
+ 
+Dependency nodes will also contain:
+
+ - fileType: The type of dependency that is being downloaded
+
+Combining a dependency `id` and `fileType` will give a unique ID for that dependency. The `fileType` is needed for reporting Media Inventory.
 
 Resource file nodes also contain:
 
@@ -380,7 +386,7 @@ The XML structure for media inventory is:
 
 ``` xml
 <files>
-	<file type="media|layout|resource|dependency|widget" id="1" complete="0|1" md5="c90a4c420dd010a5e95dedb8927a29e7" lastChecked="1284569347" />
+	<file type="media|layout|resource|dependency|widget" id="1" complete="0|1" md5="c90a4c420dd010a5e95dedb8927a29e7" lastChecked="1284569347" fileType="dependencyFileType" />
 </files>
 ```
 
@@ -389,6 +395,7 @@ The XML structure for media inventory is:
  - complete: whether the file is complete or not.
  - md5: the md5 of the file in the local cache.
  - lastChecked: a unix date/time for when the file was last by the player checked.
+ - fileType: only used for dependencies, this is the file type provided in required files for the dependency
 
 
 
