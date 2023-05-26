@@ -111,7 +111,7 @@ Upon a successful call to `RequiredFiles` the Player must parse the response and
 
 Upon a successful call to `Schedule` the Player must parse the response and determine which Schedules should be put in rotation based on their `from` and `to` dates.
 
-Each time a file is successfully downloaded via one of the methods shown the Player should call `MediaInventory` with the status of each Required File vs. its cache of those files.
+Each time a player requests it's required files it should calculate whether any files need to be downloaded and then call `MediaInventory` with a list of all files status. If there are any files to be downloaded the player should do so and once all pending downloads have been completed it should call `MediaInventory` again with an updated status of each file.
 
 Once complete the Player may submit its cached Stat/Log records to the CMS for processing.
 
@@ -256,16 +256,8 @@ It returns the following XML string:
    <file type="media" id="493" size="40408" md5="c90a4c420dd010a5e95dedb8927a29e7" download="xmds" path="weathericons-regular-webfont.woff" />
    <file type="layout" id="29" size="303" md5="5e6ef3b612b39c83bf8c5cf9f2a75ef5" download="xmds" path="29" code="layoutCode" />
    <file type="resource" id="29" layoutid="1" regionid="3" mediaid="5" updated="102984759" />
-   <file type="widget" id="29" />
+   <file type="widget" id="29" updateInterval="3600" />
 </files>
-```
-
-From CMS version 3.1 onward, an additional node `purge` will be present in the XML string:
-```xml
-<purge>
-   <item id="149" storedAs="149.jpg"/>
-   <item id="63" storedAs="63.jpg"/>
-</purge>
 ```
 
 Each `file` node contains the following attributes:
@@ -301,16 +293,35 @@ Resource file nodes also contain:
  - mediaid: The mediaId that references this resource.
  - updated: A timestamp indicating the last time this resource was updated.
 
-Widget nodes are only output for players connecting to XMDS v7 and are used to request data. They do not have any additional properties.
+Widget nodes are only output for players connecting to XMDS v7 and are used to request data, they will contain:
+
+ - updateInterval: the number of seconds the player should wait before getting a new cache of the file
 
 Each `item` in `purge` node contains following attributes:
  - id: Media ID set to be purged
  - storedAs: the name of the file in Player local storage
 
-The required files XML should be parsed and any files that are missing from the local cache OR that have a different MD5 should be downloaded again.
+#### Parsing
+The required files XML should be parsed and each node compared to the local cached copy of that file. A new copy of the file/resource should be downloaded when:
 
-Files in purge node should be removed from the Player local storage.
+ - the file is not already cached locally
+ - the file cached locally has a different MD5
+ - the file cached locally is older than when the last update happened in the CMS (resource nodes)
+ - the file cached locally is older than the update interval (widget nodes)
 
+Any files/resources that are deemed to be out of date should be downloaded from the CMS again.
+
+#### Purging files
+
+From CMS version 3.1 onward, an additional node `purge` will be present in the XML string:
+```xml
+<purge>
+   <item id="149" storedAs="149.jpg"/>
+   <item id="63" storedAs="63.jpg"/>
+</purge>
+```
+
+Files in purge node should be removed from the Player local storage immediately.
 
 
 #### Download Type
@@ -370,7 +381,7 @@ The Layout XLF determines when a resource file should be loaded or when a native
 
 ### MediaInventory
 
-The `MediaInventory` method is used by the Player to update the status of its cached files in the CMS. The CMS uses this information to present the status of each Display in the "Displays" page.
+The `MediaInventory` method is used by the Player to update the status of its cached files in the CMS. The CMS uses this information to present the status of each Display in the "Displays" page. If all file nodes are set to `complete="1"` the Display status in the CMS will be updated to complete and the Display row shown as green.
 
 It takes the following parameters:
 
@@ -378,9 +389,6 @@ It takes the following parameters:
  - hardwareKey
  - mediaInventory: XML representation of currently cached files vs required files.
 
-
-
-#### Media Inventory
 
 The XML structure for media inventory is:
 
