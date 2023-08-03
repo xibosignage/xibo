@@ -13,7 +13,7 @@ If a requirement you're working on involves changing the Player API or Player so
 
 The rest of this page discusses the CMS architecture.
 
-> NOTE: This documentation needs updating for Xibo v3.
+> NOTE: This documentation needs updating for Xibo v3/v4.
 
 -----------------
 
@@ -126,41 +126,48 @@ Middleware is used to wire up the new route - create a Middleware file in the
 <?php
 namespace Xibo\Custom;
 
-use Slim\Middleware;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Xibo\Middleware\CustomMiddlewareTrait;
 
 /**
  * Class MyMiddleware
  * @package Xibo\custom
  *
- * Included by instantiation in `settings.php`
+ * Included in `custom/settings-custom.php`
+ * $middleware = [new \Xibo\Custom\MyMiddleware()];
  */
-class MyMiddleware extends Middleware
+class MyMiddleware implements MiddlewareInterface
 {
-    public function call()
+    use CustomMiddlewareTrait;
+
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $app = $this->getApplication();
-
-        // Register some new routes
-        $app->get('/myapp/test', '\Xibo\Custom\MyController:testView')->setName('test.view');
-
         // Register a new controller with DI
         // This Controller uses the CMS standard set of dependencies. Your controller can
         // use any dependencies it requires.
         // If you want to inject Factory objects, be wary of circular references.
-        $app->container->singleton('\Xibo\Custom\MyController', function($container) {
-            return new \Xibo\Custom\MyController(
-                $container->logService,
-                $container->sanitizerService,
-                $container->state,
-                $container->user,
-                $container->helpService,
-                $container->dateService,
-                $container->configService
-            );
+        $this->getContainer()->set('\Xibo\Custom\MyController', function ($c) {
+            $controller = new MyController();
+            $controller->useBaseDependenciesService($this->getFromContainer('ControllerBaseDependenciesService'));
+            return $controller;
         });
 
         // Next middleware
-        $this->next->call();
+        return $handler->handle($request);
+    }
+
+    /**
+     * Add routes
+     * @return $this
+     */
+    public function addRoutes()
+    {
+        // Register some new routes
+        $this->getApp()->get('/myapp/test', ['\Xibo\Custom\MyController', 'testView'])->setName('test.view');
+        return $this;
     }
 }
 ```
@@ -173,11 +180,9 @@ The Controller should be provided also:
 <?php
 namespace Xibo\Custom;
 
+use Slim\Http\Response as Response;
+use Slim\Http\ServerRequest as Request;
 use Xibo\Controller\Base;
-use Xibo\Service\ConfigServiceInterface;
-use Xibo\Service\DateServiceInterface;
-use Xibo\Service\LogServiceInterface;
-use Xibo\Service\SanitizerServiceInterface;
 
 /**
  * Class MyController
@@ -186,32 +191,23 @@ use Xibo\Service\SanitizerServiceInterface;
 class MyController extends Base
 {
     /**
-     * Set common dependencies.
-     * @param LogServiceInterface $log
-     * @param SanitizerServiceInterface $sanitizerService
-     * @param \Xibo\Helper\ApplicationState $state
-     * @param \Xibo\Entity\User $user
-     * @param \Xibo\Service\HelpServiceInterface $help
-     * @param DateServiceInterface $date
-     * @param ConfigServiceInterface $config
-     */
-    public function __construct($log, $sanitizerService, $state, $user, $help, $date, $config)
-    {
-        $this->setCommonDependencies($log, $sanitizerService, $state, $user, $help, $date, $config);
-    }
-
-    /**
      * Display Page for Test View
      */
-    public function testView()
+    public function testView(Request $request, Response $response): Response
     {
         // Call to render the template
-        // This assumes that "twig-template-name-without-extension.twig" exists
-        // in the active theme (i.e. in the view path of the active theme).
-        $this->getState()->template = 'twig-template-name-without-extension';
-        $this->getState()->setData([]); /* Data array to provide to the template */
+        //$this->getState()->template = 'twig-template-name-without-extension';
+        //$this->getState()->setData([]); /* Data array to provide to the template */
+
+        // Output directly
+        $this->setNoOutput(true);
+        echo 'String Output';
+        
+        // Always return through render.
+        return $this->render($request, $response);
     }
 }
+
 ```
 
 The Middleware needs to be wired up in the `settings.php` file:
