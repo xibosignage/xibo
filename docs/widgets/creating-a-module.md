@@ -156,7 +156,7 @@ A test is a set of conditions which are assessed in sequence.
 
 | Element     | Type      | Description                |
 |-------------|-----------|----------------------------|
-| `condition` | Condition | Visibility test condition. |
+| `condition` | Condition | Test condition.            |
 
 ##### 1.3.1.2. Condition
 

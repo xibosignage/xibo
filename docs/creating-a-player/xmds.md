@@ -326,7 +326,7 @@ Files in purge node should be removed from the Player local storage immediately.
 
 #### Download Type
 
-The CMS supports downloading files over XMDS directly or over directly over HTTP. If HTTP downloads are enabled the `path` attribute will contain a fully qualified download path and a new attribute named `saveAs` will be present showing the intended save path.
+The CMS supports downloading files over XMDS directly or over HTTP. If HTTP downloads are enabled the `path` attribute will contain a fully qualified download path and a new attribute named `saveAs` will be present showing the intended save path.
 
 HTTP downloads are only valid for one usage and are refreshed with a new `path` each time `RequiredFiles` is called after the CMS sees a change in content that would require the Player to download new media items. This means that RequiredFiles will ordinarily contain links to download content which are not valid any longer if the Player has reported to the CMS that it has downloaded those files successfully.
 

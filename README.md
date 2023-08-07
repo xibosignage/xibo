@@ -1,12 +1,33 @@
-# Introduction
-Xibo is a Digital Signage platform released under the AGPLv3 Open Source licence. We are a powerful Open Source
-Digital Signage content management system with Windows display player software. We have commercial player options for
-Android, LG webOS and Samsung Tizen, as well as CMS hosting and support. 
+[![Xibo - Digital Signage](xibologo.png)](https://xibosignage.com)
+
+[![CMS downloads](https://img.shields.io/github/downloads/xibosignage/xibo-cms/total.svg?label=CMS%20Downloads)]()
+
+[![Windows Player](https://img.shields.io/github/downloads/xibosignage/xibo-dotnetclient/total.svg?label=Windows%20Player%20Downloads)]()
+
+
+## About Xibo
+Xibo is a powerful Open Source Digital Signage platform with a web content management system and Windows display player
+software. We have commercial player options for Android, LG webOS and Samsung Tizen, as well as CMS hosting and support.
 
 See [https://xibosignage.com](https://xibosignage.com) for more information.
 
-Our first open source release 1.0.0-rc1 landed in 2009, and we're committed to keeping everything you need to run a 
+Our first open source release 1.0.0-rc1 landed in 2009, and we're committed to keeping everything you need to run a
 digital signage network, or single screen, open source and free to use.
+
+## Licence
+
+[![Licence](https://img.shields.io/github/license/xibosignage/xibo-cms)]()
+
+Copyright (C) 2006-2023 Xibo Signage Ltd and Contributors.
+
+Xibo is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public
+License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+
+Xibo is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with Xibo. 
+If not, see <http://www.gnu.org/licenses/>.
 
 ## Documentation
 We have 3 types of documentation available to suit the audience: 
