@@ -14,7 +14,7 @@ These documents are ordered such that more common activities are discussed first
 
 | Section           | Description                                                                                                                                                          | Example                                                                                                                                              |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Widgets           | Learn how to create Embedded or Package HTML Widgets using the Layout Designer, or dive into creating your own Module.                                               | Creating a new visualisation for use on a Layout. This may involve pulling data from a 3rd party.                                                    |
+| Widgets           | Learn how to create Embedded or Package HTML Widgets using the Layout Editor, or dive into creating your own Module.                                                 | Creating a new visualisation for use on a Layout. This may involve pulling data from a 3rd party.                                                    |
 | Player Control    | Discover what can be done player side including what information from the Player is available to a Widget, how to control duration and how to send/receive webhooks. | Interactivity on a player, for example triggering content via a light sensor.                                                                        |
 | Themes            | Change the look and feel of the CMS.                                                                                                                                 | Alter the appearance of the CMS by changing colours and adding logos.                                                                                |
 | Integrate         | Connect a 3rd party system by calling the Xibo API. Learn how to authenticate via oAuth and what API calls are available.                                            | A 3rd party will push content into Xibo. The Xibo Canva app is a good example of this.                                                               |
@@ -24,7 +24,7 @@ These documents are ordered such that more common activities are discussed first
 
 ### A note on Open Source
 
-Full disclaimer, we are not lawyers or experts in software law! If you have any doubts always speak to a professional.
+Full disclaimer we are not lawyers; if you have any doubts always speak to a professional.
 
 Xibo is open source and that has some implications for certain activities. As a general rule if you're entering code into the CMS via the user interface, uploading as package HTML, sending a webhook, developing a module/module template using only the XML definitions supported by the CMS or connecting via the API you are doing so at "arms length" and you can licence your code as you wish.
 
