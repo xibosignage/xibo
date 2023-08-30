@@ -61,12 +61,8 @@
           "slug": "widgets/widget-sizing"
         },
         {
-          "title": "Upgrading to v3",
-          "slug": "widgets/upgrading-v3"
-        },
-        {
-          "title": "Upgrading to v2",
-          "slug": "widgets/upgrading-v2"
+          "title": "Upgrading to v4",
+          "slug": "widgets/upgrading-v4"
         }
       ],
       "player-control": [

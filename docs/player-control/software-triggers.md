@@ -7,7 +7,7 @@ title: "Software Triggers through XMR - Player Control"
 
 # Software Triggers through XMR
 
-Xibo supports dynamic signage through the use of software triggers. These are triggers initiated by the CMS and pushed to targeted Players for immediate action using the [Xibo Message Relay (XMR)](https://xibo.org.uk/docs/setup/xmr-push-messaging), a form of push messaging. Software triggers are a flexible way to connect Xibo Players to devices or software which are centrally available to the CMS.
+Xibo supports dynamic signage through the use of software triggers. These are triggers initiated by the CMS and pushed to targeted Players for immediate action using the Xibo Message Relay (XMR), a form of push messaging. Software triggers are a flexible way to connect Xibo Players to devices or software which are centrally available to the CMS.
 
 Software triggers through XMR are only available if the network connected.
 
