@@ -23,7 +23,7 @@ Retrieving and parsing data will likely depend on module settings and properties
 
 If the request has been handled, you must call `setIsHandled()` on the data provider.
 
-## User the data provider
+## Use the data provider
 ### Using a Widget Provider
 
 To use a widget provider a new class should be created and added to the `class` attribute in the module XML. This class should implement `WidgetProviderInterface` and add logic to the `fetchData` method.

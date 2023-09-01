@@ -39,18 +39,19 @@ This file should be saved in `custom/modules/xibosignage-helloworld.xml`
     <preview></preview>
     <stencil>
         <twig><![CDATA[
-   			<h1>Your message is.....</h1>
-			<p>{{message}}</p>
-            <script type="text/javascript">
-                $(function() {
-					window.scaleContent = true;
-					$("body").xiboLayoutScaler(globalOptions);
-                });
-            </script>
+<h1>Your message is.....</h1>
+<p>{{message}}</p>
         ]]></twig>
     </stencil>
+    <onRender><![CDATA[
+// Scale the element every time
+$(target).xiboLayoutScaler(properties);
+    ]]></onRender>
 </module>
 ```
+
+We use a Twig template to get our saved `message` property and output it in the HTML that the player receives. We also use our `onRender` JavaScript function to call the `xiboLayoutScaler` for handling [widget size](widget-sizing).
+
 
 ## Hello world - with data
 In this example we're going to add a new widget which provides data for the existing message data type. You can see from the data type definition that message has a simple structure:
@@ -146,6 +147,10 @@ class HelloWorldDataProvider implements WidgetProviderInterface
     }
 }
 ```
+
+When we add our new module to a layout, we will see that the existing templates for the `message` data type are available to the user.
+
+{tip}We can do the reverse and create a template for an existing data type. This template would be available under any module that uses it.{/tip} 
 
 # Use the module
 ## Enabling the Modules
