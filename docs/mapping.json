@@ -1,0 +1,183 @@
+{
+    "pages": [
+        {
+            "src": 3979, 
+            "nav": "extend",
+            "slug_override": "extend/contributing"
+        },
+        {
+            "src": 7702, 
+            "nav": "cms-api",
+            "title_override": "Getting Started with Postman", 
+            "slug_override": "cms-api/getting-started-with-postman"
+        }
+    ],
+    "nav": {
+      "index": [
+        {
+          "title": "Widgets",
+          "slug": "widgets"
+        },
+        {
+          "title": "Player Control",
+          "slug": "player-control"
+        },
+        {
+          "title": "Integrate with Xibo",
+          "slug": "cms-api"
+        },
+        {
+          "title": "Themes",
+          "slug": "themes"
+        },
+        {
+          "title": "Extend Xibo",
+          "slug": "extend"
+        },
+        {
+          "title": "Creating a Player",
+          "slug": "creating-a-player"
+        }
+      ],
+      "widgets": [
+        {
+          "title": "Widgets",
+          "slug": "widgets"
+        },
+        {
+          "title": "Embedded",
+          "slug": "widgets/embedded"
+        },
+        {
+          "title": "Package HTML",
+          "slug": "widgets/package-html"
+        },
+        {
+          "title": "Creating a Module",
+          "slug": "widgets/creating-a-module"
+        },
+        {
+          "title": "Widget Sizing",
+          "slug": "widgets/widget-sizing"
+        },
+        {
+          "title": "Upgrading to v4",
+          "slug": "widgets/upgrading-v4"
+        }
+      ],
+      "player-control": [
+        {
+          "title": "Player Control",
+          "slug": "player-control"
+        },
+        {
+          "title": "Player Info",
+          "slug": "player-control/getting-player-information-using-javascript"
+        },
+        {
+          "title": "Controlling Duration",
+          "slug": "player-control/controlling-duration"
+        },
+        {
+          "title": "Webhooks",
+          "slug": "player-control/webhooks"
+        },
+        {
+          "title": "Software Triggers",
+          "slug": "player-control/software-triggers"
+        }
+      ],
+      "cms-api": [
+        {
+          "title": "Integrate with Xibo",
+          "slug": "cms-api"
+        },
+        {
+          "title": "Authentication",
+          "slug": "cms-api/auth"
+        },
+        {
+          "title": "Making Requests",
+          "slug": "cms-api/making-requests"
+        },
+        {
+          "title": "API Reference (latest)",
+          "slug": "https://xibo.org.uk/manual/api/"
+        },
+        {
+          "title": "Getting started with Postman",
+          "slug": "cms-api/getting-started-with-postman"
+        },
+        {
+          "title": "Client Libraries",
+          "slug": "cms-api/client-libraries"
+        }
+      ],
+      "themes": [
+        {
+          "title": "Themes",
+          "slug": "themes"
+        }
+      ],
+      "extend": [
+        {
+          "title": "Extend Xibo",
+          "slug": "extend"
+        },
+        {
+          "title": "Contributing",
+          "slug": "extend/contributing"
+        },
+        {
+          "title": "Architecture Overview",
+          "slug": "extend/architecture"
+        },
+        {
+          "title": "Middleware",
+          "slug": "extend/middleware"
+        },
+        {
+          "title": "Custom Display Profiles",
+          "slug": "extend/custom-display-profiles"
+        },
+        {
+          "title": "Tasks",
+          "slug": "extend/tasks"
+        },
+        {
+          "title": "Event Dispatcher",
+          "slug": "extend/dispatcher"
+        },
+        {
+          "title": "Connectors",
+          "slug": "extend/connectors"
+        }
+      ],
+      "creating-a-player": [
+        {
+          "title": "Creating a Player",
+          "slug": "creating-a-player"
+        },
+        {
+          "title": "Communicating with the CMS",
+          "slug": "creating-a-player/xmds"
+        },
+        {
+          "title": "Xibo Layout Format",
+          "slug": "creating-a-player/xlf"
+        },
+        {
+          "title": "Rendering",
+          "slug": "creating-a-player/rendering"
+        },
+        {
+          "title": "Interactive",
+          "slug": "creating-a-player/interactive"
+        },
+        {
+          "title": "Collecting Proof of Play",
+          "slug": "creating-a-player/proof-of-play"
+        }
+      ]
+    }
+}
