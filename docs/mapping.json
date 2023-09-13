@@ -57,6 +57,10 @@
           "slug": "widgets/creating-a-module"
         },
         {
+          "title": "Templates",
+          "slug": "widgets/templates"
+        },
+        {
           "title": "Widget Sizing",
           "slug": "widgets/widget-sizing"
         },
