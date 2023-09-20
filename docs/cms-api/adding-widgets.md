@@ -1,6 +1,6 @@
 ---
 nav: "cms-api"
-slug: "cms-api/making-requests"
+slug: "cms-api/adding-widgets"
 title: "Adding Widgets - Integrate with Xibo"
 ---
 
