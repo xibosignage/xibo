@@ -105,6 +105,10 @@
           "slug": "cms-api/making-requests"
         },
         {
+          "title": "Adding Widgets",
+          "slug": "cms-api/adding-widgets"
+        },
+        {
           "title": "API Reference (latest)",
           "slug": "https://xibo.org.uk/manual/api/"
         },
