@@ -7,7 +7,9 @@ alias: "modules-and-widgets"
 
 # Widgets
 
-Widgets are a core component of Xibo and are used to display content on a Layout or in a Playlist. If a user adds some text, an image, or some dynamic content to a Layout they are adding a Widget. A suite of Widgets are provided in the core software, these are discussed in the [user manual](https://xibo.org.uk/manual/en/media_modules.html). 
+Widgets are a core component of Xibo and are used to display content on a Layout or in a Playlist. If a user adds some text, an image, or some dynamic content to a Layout they are adding a Widget. A suite of Widgets is provided in the core software, these are discussed in the [user manual](https://xibo.org.uk/manual/en/media_modules.html). 
+
+Xibo has two types of Widget; Widgets and Data Widgets.
 
 Developers can extend Xibo with new Widgets by creating Modules/Templates.
 
@@ -37,11 +39,11 @@ Xibo wants developers to make things! We care about the developer experience and
 
 
 ### Templates
-Widgets which rely on data and/or have multiple records can use a template to control their appearance.
+Widgets which rely on data, or "Data Widgets", must use a template to control their appearance. This can be elements, stencils or static templates.
 
-Templates are XML files which describe how to represent a particular type of data, for example an `article` or `social-media`.
+All templates are XML files which describe how to represent a particular type of data, for example an `article` or `social-media`.
 
-Templates are used when a module has a `dataType`.
+Templates are used when a module has a `dataType`. Modules with a `dataType` appear under "Data Widgets" in the Layout Editor.
 
 
 ## Upgrading

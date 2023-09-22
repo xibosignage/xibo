@@ -58,18 +58,18 @@ For example, the `countdown` module from v2/v3 has been split into 4 separate co
 
 ## 2. Template
 
-| Element              | Type         | Description                                                                            | Options                                                                                      | Sample value        |
-|----------------------|--------------|----------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|---------------------|
-| `id`                 | string       | A unique ID for the template.                                                          |                                                                                              | `template1`         |
-| `type`               | string       | The type of template.                                                                  | `static`, `element`, `stencil`                                                               | `static`            |
-| `title`              | string       | The title of the template used in the CMS to identify the template.                    |                                                                                              | `Template 1`        |
-| `dataType`           | string       | The data type of the template. Used to list the template in the corresponding modules. |                                                                                              | `article`           |
-| `thumbnail`          | string       | The assetId of an image to be used as the thumbnail                                    |                                                                                              |                     |
-| `showIn`             | string       | Where should this module be shown?                                                     | `both`, `playlist`, `layout`                                                                 | `both`              |
-| `properties`         | Property     | Same as the properties in the Module XML, but specific to the template.                |                                                                                              |                     |
-| `stencil`            | Stencil      | The stencil for the HTML of the template.                                              |                                                                                              |                     |
-| `onElementParseData` | CDATA string | JavaScript function run for each data property, before rendering.                      | // value: The value <br/>// meta: Metadata <br/>// properties: The properties for the widget |                     |
-| `onTemplateRender`   | CDATA string | JavaScript function run when a template is rendered.                                   |                                                                                              | `<![CDATA[ ... ]]>` |
+| Element              | Type         | Description                                                                            | Options                                                              | Sample value        |
+|----------------------|--------------|----------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------------------|
+| `id`                 | string       | A unique ID for the template.                                                          |                                                                      | `template1`         |
+| `type`               | string       | The type of template.                                                                  | `static`, `element`, `element-group`                                 | `static`            |
+| `title`              | string       | The title of the template used in the CMS to identify the template.                    |                                                                      | `Template 1`        |
+| `dataType`           | string       | The data type of the template. Used to list the template in the corresponding modules. |                                                                      | `article`           |
+| `thumbnail`          | string       | The assetId of an image to be used as the thumbnail                                    |                                                                      |                     |
+| `showIn`             | string       | Where should this module be shown?                                                     | `both`, `playlist`, `layout`                                         | `both`              |
+| `properties`         | Property     | Same as the properties in the Module XML, but specific to the template.                |                                                                      |                     |
+| `stencil`            | Stencil      | The stencil for the HTML of the template.                                              |                                                                      |                     |
+| `onElementParseData` | CDATA string | JavaScript function run for each data property, before rendering.                      | // value: The value<br/>// properties: The properties for the widget |                     |
+| `onTemplateRender`   | CDATA string | JavaScript function run when a template is rendered.                                   |                                                                      | `<![CDATA[ ... ]]>` |
 
 > **Note:** Template `id` cannot contain hyphens (`-`). This is because it will be used to generate a unique method name for `onTemplateRender`.
 

@@ -12,7 +12,7 @@ Their core configuration consists of 3 items:
 
 - **HTML to Embed**: HTML injected into a content `<div>` 
 - **Custom Style Sheet**: A style sheet which will be injected into the final rendered HTML.
-- **HEAD content to Embed**: Anything else you want to put in the `<head>` of the document (`<script>` tags required)
+- **JavaScript**: Any JavaScript you want to define (`<script>` tags not required)
 
 The contents in HTML and Custom Style Sheet will also be parsed for library substitutions. These are `[]` tags containing a `mediaId` from the Library, and can be used to reference images and other stored files.
 

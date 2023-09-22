@@ -57,6 +57,10 @@
           "slug": "widgets/creating-a-module"
         },
         {
+          "title": "Templates",
+          "slug": "widgets/templates"
+        },
+        {
           "title": "Widget Sizing",
           "slug": "widgets/widget-sizing"
         },
@@ -99,6 +103,10 @@
         {
           "title": "Making Requests",
           "slug": "cms-api/making-requests"
+        },
+        {
+          "title": "Adding Widgets",
+          "slug": "cms-api/adding-widgets"
         },
         {
           "title": "API Reference (latest)",

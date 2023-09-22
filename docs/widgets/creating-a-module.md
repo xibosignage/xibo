@@ -32,7 +32,7 @@ Modules which are expected to supply data have the `dataType` property set. Xibo
 
 ### Hello World...
 
-See [hello world](hello-world) for simple working examples.
+See [hello world](hello-world) for simple working examples of a Module. See [templates](templates) for a detailed look at how to create elements, stencils and static templates for Data Widgets.
 
 ### File locations
 
@@ -79,7 +79,7 @@ A module has the opportunity to provide an alternative preview using the `previe
 
 ### How it works
 
-The rendering flow of a module is how the content is created, based on the data that is passed in to the module. All modules are optional, and run in sequence.
+The rendering flow of a module is how the content is created, based on the data that is passed in to the module. All methods are optional, and run in sequence.
 
 The `onInitialize` method is the first to run, and is mostly used to set up the variables and methods that will be used in the rendering process.
 
@@ -147,6 +147,15 @@ Called on the template.
 | `meta`       | The meta data provided by the provider |
 
 > **Note:** Both `onRender` and `onTemplateRender` are called multiple times when changing the dimensions of the preview window. If set, the methods needs to be able to clear the previous render in each call.
+
+#### `onElementParseData`
+
+Elements only.
+
+| Name         | Description                  |
+|--------------|------------------------------|
+| `value`      | The element value            |
+| `properties` | The properties of the module |
 
 ## Replacements
 
