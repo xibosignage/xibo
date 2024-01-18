@@ -21,7 +21,7 @@ The Layout structure defines the Layout width, height and the Regions it is divi
 
 *Note:* in 1.8 onward the CMS refers to "Widgets" being added to Region Timelines - for the Player this is translated into `<media>` nodes.
 
-![Layout Structure Diagram|690x480](../../img/advanced_structure_of_a_layout.png) 
+![Layout Structure Diagram|690x480](../img/advanced_structure_of_a_layout.png) 
 
 The structure part of a Layout XLF is shown below:
 
