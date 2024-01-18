@@ -10,17 +10,19 @@ Data Connectors were added in Xibo v4.1 and are defined in the CMS attached to a
 
 The purpose of a data connector is to define JavaScript which will run on the Player, fetch data from a data source and make it available to widgets via `xiboIC`, or set schedule criteria.
 
+Data Connectors and data/schedule criteria set by them persist across layout changes and changes to the schedule loop.
+
 The flow of data is described below:
 
 ![Data Connector Flow](../img/data-connector-flow.png)
 
-While the data connector is running, it uses as helper class called `xiboDC` inform the player of a change in data or criteria. In both cases the player notifies interested parties in the change.
+While the data connector is running, it uses as helper class called `xiboDC` inform the player of a change in data or criteria. In both cases the player notifies interested parties of the change.
 
-In the case of setting new data, widgets register their interest in data changes and can then process those as needed. Widgets use xiboIC to getData once notified or as they need to.
+To be notified of new data, Widgets must register their interest in data changes and can then process those as needed. Widgets use `xiboIC` to getData once notified or as they need to.
 
 ## Initialisation
 
-JavaScript in a Data Connector define a window function called `onInit` to be called when the JavaScript engine is initialised.
+JavaScript in a Data Connector needs to define a window function called `onInit` which will be called when the JavaScript engine is ready.
 
 ```js
 window.onInit = function() {
@@ -28,7 +30,7 @@ window.onInit = function() {
 };
 ```
 
-The JavaScript engine in use is player dependent and if you know that you will be using the Data Connector on older hardware, you should find out which web engine is available and code accordingly.
+The JavaScript features available are player dependent and if you know that you will be using the Data Connector on older hardware, you should find out which web engine is available and code accordingly.
 
 ### Parameters
 
@@ -73,7 +75,7 @@ Once data has been collected, Data Connectors can set it on the player and choos
 
 #### Set data
 
-To set data, Data Connectors can use `xiboDC.setData()` with the following method signature. Once set data is available to any widgets running locally on the player. It is not available externally to the player.
+To set data, Data Connectors can use `xiboDC.setData()` with the following method signature. Once set, data is available to any widgets running locally on the player. It is not available externally to the player.
 
 ```js
 /**
@@ -88,7 +90,7 @@ xiboDC.setData(dataKey, data, {done});
 
 Setting data happens asynchronously and therefore a `done` handler is provided.
 
-Data should always be set as a string to avoid any differences between player types when retrieving.
+Data should always be set as a string to avoid any differences between player types when data is retrieved.
 
 If you are using the core "Real time data" widget with Elements or a core template, the data key you need to update is the `window.dataSetId`.
 
@@ -108,9 +110,11 @@ window.onInit = function() {
 }
 ```
 
+In this example our Data Connector will initialise a counter at 0 and then update it once per second. Each time the counter updates, all interested widgets are notified, which is explained in the next section.
+
 #### Notify
 
-At an appropriate time, the Data Connector can notify all interested parties that data has been updated for them to check. This is done using `xiboDC.notifyHost()` with the following method signature.
+At an appropriate time, the Data Connector can notify all interested parties that data has been updated. This is done using `xiboDC.notifyHost()` with the following method signature.
 
 ```js
 /**
@@ -119,6 +123,8 @@ At an appropriate time, the Data Connector can notify all interested parties tha
  */
 xiboDC.notifyHost(dataKey);
 ```
+
+Usually the data key used to notify will be the same as the data key used to set data, as show in the timer example above.
 
 The data key does not have to be the same as the data key of the `setData` operation, for example if you want to group multiple data keys together in one notification you could give another name for your widget to respond to.
 
@@ -129,7 +135,7 @@ If you are using the core "Real time data" widget with Elements or a core templa
 
 Data Connectors can also set schedule criteria. Setting new schedule criteria will cause the schedule to be reassessed and all events criteria evaluated to build a new schedule loop.
 
-Players may implement throttling on this function to maintain stability.
+Players may implement throttling on this function to maintain stability, please do not call it rapidly.
 
 `xiboDC.setCriteria(metric, value, ttl)` is used to set criteria, with the following method signature.
 
@@ -155,8 +161,9 @@ xiboDC.setCriteria('GOAL', true, 30);
 Data Connectors can be tested in the CMS using the "View Data Connector" page accessible via the row menu for its parent DataSet.
 
 The Data Connector JavaScript is provided to the left, and a tabbed live view provided to the right, with the following tabs:
+
  - Test Params: A field to enter test params which will be made available to the Data Connector
- - Logs: Captured console logs;
+ - Logs: Captured console logs
  - DataSet Data: A table representation of data who's data key matches the DataSet ID
  - Other Data: A JSON representation of data who's data key does not match the DataSet ID
  - Schedule Criteria: A table showing schedule criteria and their TTL
@@ -180,7 +187,7 @@ To work with real time data a widget must implement two functions:
 
 ### Get Data
 
-Widgets can call `xiboIC.getData()` to retrieve data for a data key. Retrieval is asynchronous so a done function should be supplied to handle the data retrieved.
+Widgets can call `xiboIC.getData()` to retrieve data for a data key. Retrieval is asynchronous so a `done` callback function should be supplied to handle the data retrieved.
 
 The done function will receive a status and a value. The value will be the stored data for that data key and will always be a string.
 
@@ -203,19 +210,21 @@ To receive an update, the `xiboIC.registerNotifyDataListener()` should be called
 
 ```js
 xiboIC.registerNotifyDataListener(function(dataKey) {
-	console.log('Notify: ' + dataKey);
+  console.log('Notify: ' + dataKey);
 });
 ```
 
 ## Real time data widget
 
-Xibo comes with a "real time data widget" module which will ask the user to choose a real time DataSet to display.
+Xibo comes with a "real time data widget" module which will ask the user to choose a DataSet source which has "real time" enabled.
 
-This module is currently a placeholder and will be finalised before the release of v4.1.
+> This module is currently a placeholder and will be finalised before the release of v4.1.
 
 ### Templates
 
 The real time data module can be extended with a module template for the "realtime" data type.
+
+Templates can be added to the CMS using the "Developer -> Module Templates" menu, or by providing the XML files in the `custom` folder of the CMS installation.
 
 
 ## Testing
