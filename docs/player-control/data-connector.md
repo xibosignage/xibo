@@ -8,9 +8,13 @@ title: "Data Connectors"
 
 Data Connectors were added in Xibo v4.1 and are defined in the CMS attached to a DataSet which has been marked as "real time". Real time DataSets can be scheduled to players via the Schedule page.
 
-The purpose of a data connector is to define JavaScript which will run on the Player, fetch data from a data source and make it available to widgets via `xiboIC`, or set schedule criteria.
+Data Connectors persist across layout changes and changes to the schedule loop.
 
-Data Connectors and data/schedule criteria set by them persist across layout changes and changes to the schedule loop.
+In a nutshell, the CMS is used to create the data structure definition, describe how it should be collected on the player and set when that should happen. The Player then runs the data connector, saves data to a local database and makes that available to widgets that need it.
+
+![Data Connector Overview](../img/data-connector-overview.png)
+
+The purpose of a data connector is to define JavaScript which will run on the Player, fetch data from a data source and make it available to widgets via `xiboIC`, or set schedule criteria.
 
 The flow of data is described below:
 
