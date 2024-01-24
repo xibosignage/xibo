@@ -10,6 +10,11 @@
             "nav": "cms-api",
             "title_override": "Getting Started with Postman", 
             "slug_override": "cms-api/getting-started-with-postman"
+        },
+        {
+            "src": 30999, 
+            "nav": "player-control",
+            "slug_override": "player-control/data-connector-hello-world"
         }
     ],
     "nav": {
@@ -89,6 +94,14 @@
         {
           "title": "Software Triggers",
           "slug": "player-control/software-triggers"
+        },
+        {
+          "title": "Data Connector",
+          "slug": "player-control/data-connector"
+        },
+        {
+          "title": "Schedule Criteria",
+          "slug": "player-control/schedule-criteria"
         }
       ],
       "cms-api": [
