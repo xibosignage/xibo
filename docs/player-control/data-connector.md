@@ -12,6 +12,8 @@ Data Connectors persist across layout changes and changes to the schedule loop.
 
 In a nutshell, the CMS is used to create the data structure definition, describe how it should be collected on the player and set when that should happen. The Player then runs the data connector, saves data to a local database and makes that available to widgets that need it.
 
+We have a [hello world](data-connector-hello-world) example to follow along.
+
 ![Data Connector Overview](../img/data-connector-overview.png)
 
 The purpose of a data connector is to define JavaScript which will run on the Player, fetch data from a data source and make it available to widgets via `xiboIC`, or set schedule criteria.
@@ -30,7 +32,7 @@ JavaScript in a Data Connector needs to define a window function called `onInit`
 
 ```js
 window.onInit = function() {
-  // Start collecting data	
+  // Start collecting data
 };
 ```
 
@@ -134,32 +136,6 @@ The data key does not have to be the same as the data key of the `setData` opera
 
 If you are using the core "Real time data" widget with Elements or a core template, the data key listened for is the `window.dataSetId`.
 
-
-## Schedule Criteria
-
-Data Connectors can also set schedule criteria. Setting new schedule criteria will cause the schedule to be reassessed and all events criteria evaluated to build a new schedule loop.
-
-Players may implement throttling on this function to maintain stability, please do not call it rapidly.
-
-`xiboDC.setCriteria(metric, value, ttl)` is used to set criteria, with the following method signature.
-
-```js
-/**
- * Set Schedule Criteria
- * @param {string} metric the name of the metric to be set, this will be matched against  the metrics defined on the scheduled events criteria tab
- * @param {string} value the value to set, this can be a string, integer, boolean, etc
- * @param {int} ttl a time to live in seconds, 0 for permanent
- */
-xiboDC.setCriteria(metric, value, ttl);
-```
-
-Example:
-
-```js
-// Indicate there is a goal and timeout after 30 seconds.
-xiboDC.setCriteria('GOAL', true, 30);
-```
-
 ## Testing
 
 Data Connectors can be tested in the CMS using the "View Data Connector" page accessible via the row menu for its parent DataSet.
@@ -235,5 +211,5 @@ Templates can be added to the CMS using the "Developer -> Module Templates" menu
 
 To test a real time data widget open it in the layout editor or preview with the Data Connector page open in another tab. Data collected by the Data Connector page will be shared across tabs and provided to the widget in the same way as it would in the player.
 
-Changes on either side would require a tab refresh.
+Changes on either side require a tab refresh.
 

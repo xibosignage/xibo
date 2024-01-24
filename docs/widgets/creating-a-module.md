@@ -157,6 +157,10 @@ Elements only.
 | `value`      | The element value            |
 | `properties` | The properties of the module |
 
+### Flow Diagram
+
+![Flow Diagram](../img/module-render-flow-diagram.png)
+
 ## Replacements
 
 In the module `hbs` template, with [handlebar expressions](https://handlebarsjs.com/guide/#what-is-handlebars) we can use module properties and template properties to render and structure the content.

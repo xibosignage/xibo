@@ -1,10 +1,10 @@
 ---
 nav: "widgets"
 slug: "widgets/templates"
-title: "Templates - Widgets"
+title: "Module Templates - Widgets"
 ---
 
-# Templates
+# Module Templates
 
 A template is the object used to represent an element, stencil (element group) or static template; used for Data Widgets. All data widgets must have templates so that Xibo knows how to visualise the data returned by the Module.
 
@@ -20,6 +20,10 @@ They are defined using XML files, in the same way as modules. The [xml definitio
 |---------------------|----------------------------------------------------------|
 | Core template XML   | `/modules/templates`                                     |
 | Custom template XML | `/custom/modules/templates`                              |
+
+
+Starting in CMS v4.1 it is possible to create module templates inside the CMS using the Developer -> Module Templates menu.
+
 
 ## RSS - a worked example
 Xibo's RSS module is a good example of a data widget. There is a `rss-ticker.xml` file which contains the properties found on the configure tab and a widget provider to fetch data from the configured URL. It declares it's `dataType` as "article", which has the following properties:
