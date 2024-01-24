@@ -467,6 +467,44 @@ It returns XML in the following format for v4 and below:
 
 The from and to dates are ISO formatted dates in the CMS time zone.
 
+Starting in schema v7, each schedule event (layout, command, overlay or action node) can have 1 or more criteria nodes:
+
+```xml
+<criteria metric="" condition="" type="weather/etc">value</criteria>
+```
+
+The `metric` property is the name of the metric to assess, the `condition` is one of the below conditions and the `type` is the metric type. A `value` is provided as the node value which is used to compare using the condition against any active criteria.
+
+Conditions are:
+
+| Name        | Description                   |
+|-------------|-------------------------------|
+| `set`       | Is the metric set? true/false |
+| `eq`        | Equal to                      |
+| `neq`       | Not equal to                  |
+| `gt`        | Greater than                  |
+| `gte`       | Greater than or equal to      |
+| `lt`        | Less than                     |
+| `lte`       | Less than or equal to         |
+| `contains`  | Value contains                |
+| `ncontains` | Value does not contain        |
+
+Starting in schema v7, data connector schedules can appear in the XML. They appear inside a `<dataConnectors>` node:
+
+```xml
+<dataConnectors>
+    <connector fromdt="" todt="" scheduleid="" priority="" isGeoAware="" geoLocation="" dataSetId="" dataParams="" js="" />
+</dataConnectors>
+```
+
+The `dataSetId` property is the ID of the DataSet associated with this connector, the player should set this as `window.dataSetId` when it runs the connector.
+
+The `dataParams` property contains a HTTP query params formatted string of additional params to set as the `window` scoped variables when the player runs the connector.
+
+The `js` property is the file name of the JavaScript file to run when the connector is active.
+
+The player should assess the from/to date of the connector as usual, and if active it should embed the JavaScript, dataSetId and dataParams provided for the entire duration of the scheduled event.
+
 
 
 #### Default Layout
