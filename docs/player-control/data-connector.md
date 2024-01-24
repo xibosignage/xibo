@@ -6,7 +6,9 @@ title: "Data Connectors"
 
 # Data Connectors
 
-Data Connectors were added in Xibo v4.1 and are defined in the CMS attached to a DataSet which has been marked as "real time". Real time DataSets can be scheduled to players via the Schedule page.
+{tip}This feature will be included in Xibo v4.1 which is due to release in the first half of 2024.{/tip}
+
+Data Connectors are defined in the CMS attached to a DataSet which has been marked as "real time". Real time DataSets can be scheduled to players via the Schedule page.
 
 Data Connectors persist across layout changes and changes to the schedule loop.
 

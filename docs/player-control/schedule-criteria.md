@@ -6,8 +6,11 @@ title: "Schedule Criteria"
 
 # Schedule Criteria
 
-Schedule Criteria was added in Xibo v4.1.
+{tip}This feature will be included in Xibo v4.1 which is due to release in the first half of 2024.{/tip}
 
+Schedule Criteria are a set of metrics set on the media player which influence the active schedule loop. Scheduled events in the CMS can have criteria configured against them, so that the event only becomes active when the criteria on the media player match.
+
+For example a metric of "PRODUCT_LIFTED" could be set on the media player via API which activated a new scheduled layout in the loop to show information regarding the lifted product.
 
 ## API call
 A POST request can be made to the player web server: `POST /criteria` containing a JSON array of criteria to add/update on the player.
