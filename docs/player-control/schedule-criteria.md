@@ -105,7 +105,6 @@ public function addMetric(string $id, string $name): self;
  */
 public function addValues(string $inputType, array $values): self;
 ```
-
 ## Step-by-Step Implementation Guide
 
 ### Step 1 - Create a Custom Connector
@@ -117,11 +116,11 @@ Connectors that want to provide schedule criteria must register a listener for t
 ```php
 use Xibo\Event\ScheduleCriteriaRequestEvent;
 
-    public function registerWithDispatcher(EventDispatcherInterface $dispatcher): ConnectorInterface
-    {
-        $dispatcher->addListener(ScheduleCriteriaRequestEvent::$NAME, [$this, 'onScheduleCriteriaRequest']);
-        return $this;
-    }
+public function registerWithDispatcher(EventDispatcherInterface $dispatcher): ConnectorInterface
+{
+    $dispatcher->addListener(ScheduleCriteriaRequestEvent::$NAME, [$this, 'onScheduleCriteriaRequest']);
+    return $this;
+}
 ```
 ### Step 3 - Implement the Event Handler
 Implement the method that will handle the ScheduleCriteriaRequestEvent. This method will add types, metrics, and values
@@ -135,6 +134,7 @@ use Xibo\Event\ScheduleCriteriaRequestInterface;
  */
 public function onScheduleCriteriaRequest(ScheduleCriteriaRequestInterface $event): void
 {
+    // Initialize Schedule Criteria parameters
     $event->addType('earthquake', 'Earthquake Alerts')
           ->addMetric('magnitude', 'Magnitude')
             ->addValues('dropdown', ['3.0-3.9' => 'Minor', '4.0-4.9' => 'Light', '5.0-5.9' => 'Moderate', '6.0-6.9' => 'Strong', '7.0+' => 'Major'])

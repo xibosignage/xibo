@@ -216,9 +216,10 @@ To test a real time data widget open it in the layout editor or preview with the
 Changes on either side require a tab refresh.
 
 # Providing Data Connector JS via Connector 
-This guide will walk you through the steps to create a Data Connector that is supplied via a connector. This feature allows connectors to provide predefined JavaScript. The process is divided into two parts:
+This guide will walk you through the steps to create a Data Connector that is supplied via a connector. This feature allows connectors to provide predefined JavaScript. 
 
 ## Step-by-Step Implementation Guide
+The process is divided into two parts:
 
 ## Part 1: Registering the Connector for the Data Source Dropdown
 To make your custom connector available as an option in the Data Connector Source Dropdown when adding or editing a dataset, you need to register it with the system.
