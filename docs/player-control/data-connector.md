@@ -14,7 +14,7 @@ Data Connectors persist across layout changes and changes to the schedule loop.
 
 In a nutshell, the CMS is used to create the data structure definition, describe how it should be collected on the player and set when that should happen. The Player then runs the data connector, saves data to a local database and makes that available to widgets that need it.
 
-We have a [hello world](data-connector-hello-world) example to follow along.
+We have a [hello world](data-connector-hello-world) that uses the `User-Defined Javascript` example to follow along.
 
 ![Data Connector Overview](../img/data-connector-overview.png)
 
@@ -215,3 +215,106 @@ To test a real time data widget open it in the layout editor or preview with the
 
 Changes on either side require a tab refresh.
 
+# Providing Data Connector JS via Connector 
+This guide will walk you through the steps to create a Data Connector that is supplied via a connector. This feature allows connectors to provide predefined JavaScript.
+
+## Step-by-Step Implementation Guide
+The process is divided into two parts:
+
+## Part 1: Registering the Connector for the Data Source Dropdown
+To make your custom connector available as an option in the Data Connector Source Dropdown when adding or editing a dataset, you need to register it with the system.
+
+### Step 1 - Create a Custom Connector
+Follow the documentation for creating a custom connector. You can find the detailed guide [here](https://xibosignage.com/docs/developer/extend/connectors).
+
+### Step 2 - Add a Listener
+Now that you have created your connector, you must register it so that the system knows it provides a Data Connector. This will ensure it appears as an option in the Data Connector Source Dropdown when adding or editing a dataset. We do this by adding a listener that executes a method to provide the connector's ID and name.
+
+Add a listener to your connector class to register it with the event dispatcher.
+```php
+use Xibo\Event\DataConnectorSourceRequestEvent;
+
+public function registerWithDispatcher(EventDispatcherInterface $dispatcher): ConnectorInterface
+{
+    // Add a listener to handle the Data Connector Source Request event
+    $dispatcher->addListener(DataConnectorSourceRequestEvent::$NAME, [$this, 'onDataConnectorSourceRequest']);
+    return $this;
+}
+```
+Add a method to handle the event and provide the connector's ID and name.
+```php
+use Xibo\Connector\DataConnectorSourceProviderInterface;
+
+/**
+ * Handle the Data Connector Source Request event.
+ *
+ * @param DataConnectorSourceProviderInterface $event
+ * @return void
+ */
+public function onDataConnectorSourceRequest(DataConnectorSourceProviderInterface $event): void
+{
+    $event->addDataConnectorSource($this->getSourceName(), $this->getTitle());
+}
+```
+
+Then, it would be added to the form as shown below:
+
+![Data Connector Overview](../img/data_connector_source_dropdown.png)
+
+## Part 2: Extending the Connector to Provide Predefined JavaScript
+Now that you have registered your connector, you need to extend it to provide predefined JavaScript. This will involve adding another listener to respond when the system checks if your connector is the selected one, and if so, provide the JavaScript.
+
+### Step 1: Add Another Listener
+Add another listener to the registerWithDispatcher() method:
+```php
+use Xibo\Event\DataConnectorSourceRequestEvent;
+use Xibo\Event\DataConnectorScriptRequestEvent;
+
+public function registerWithDispatcher(EventDispatcherInterface $dispatcher): ConnectorInterface
+{
+    // Add a listener to handle the Data Connector Source Request event
+    $dispatcher->addListener(DataConnectorSourceRequestEvent::$NAME, [$this, 'onDataConnectorSourceRequest']);
+
+    // Add a listener to handle the Data Connector Script Request event
+    $dispatcher->addListener(DataConnectorScriptRequestEvent::$NAME, [$this, 'onDataConnectorScriptRequest']);
+
+    return $this;
+}
+```
+
+### Step 2: Add a Method to Handle the Data Connector Script Request Event
+Add a method to handle the event and provide the JavaScript if the connector ID matches; a sample predefined JavaScript snippet is included in the code example below.
+```php
+use Xibo\Connector\DataConnectorScriptProviderInterface;
+
+/**
+ * Handle the Data Connector Script Request event.
+ *
+ * @param DataConnectorScriptProviderInterface $event
+ * @return void
+ */
+public function onDataConnectorScriptRequest(DataConnectorScriptProviderInterface $event): void
+{
+    // Ensure the script is only set if the connector ID matches the ID provided from the event
+    if ($event->getConnectorId() != $this->getSourceName()) {
+        return;
+    }
+
+    // Initialize the Data Connector JS
+    $script = <<<JS
+window.onInit = function() {
+    setInterval(function() {
+        xiboDC.setData('sensor', (Math.floor(Math.random() * 100) + 1), {
+            done: function() {
+                xiboDC.notifyHost('sensor');
+            }
+        });
+    }, 1000);
+}
+JS;
+
+    // Set the script
+    $event->setScript($script);
+}
+```
+By following these steps, you have successfully registered your custom connector and extended it to provide predefined JavaScript. This enables your Data Connector to appear as an option in the Data Connector Source Dropdown and supply JavaScript when selected.
