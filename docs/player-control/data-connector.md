@@ -225,6 +225,13 @@ To make your custom connector available as an option in the Data Connector Sourc
 #### Step 1 - Create Custom Connector
 Follow the documentation for creating a custom connector. You can find the detailed guide [here](https://xibosignage.com/docs/developer/extend/connectors).
 
+Be sure to enable it afterward:
+1. Go to Applications
+2. Find your custom connector
+3. Click Configure
+4. Check the "Enabled?" checkbox
+5. Click Save
+
 #### Step 2 - Add Event Listener
 Now that you have created your connector, you must register it so that the system knows it provides a Data Connector. This will ensure it appears as an option in the Data Connector Source Dropdown when adding or editing a dataset. We do this by adding a listener that executes a method to provide the connector's ID and name.
 
@@ -258,7 +265,7 @@ public function onDataConnectorSourceRequest(DataConnectorSourceProviderInterfac
 
 Then, it would be added to the form as shown below:
 
-![Data Connector Overview](../img/data_connector_source_dropdown.png)
+![Data Connector Dropdown](../img/data_connector_source_dropdown.png)
 
 ## Part 2: Extend Connector to Provide JavaScript
 Now that you have registered your connector, you need to extend it to provide predefined JavaScript. This will involve adding another listener to respond when the system checks if your connector is the selected one, and if so, provide the JavaScript.
@@ -317,3 +324,16 @@ JS;
 }
 ```
 By following these steps, you have successfully registered your custom connector and extended it to provide predefined JavaScript. This enables your Data Connector to appear as an option in the Data Connector Source Dropdown and supply JavaScript when selected.
+
+### Test Data Connector JS
+To check if it's working:
+1. Go to the DataSets page.
+2. Create a new dataset.
+3. Check the "Real time?" checkbox.
+4. A Data Connector Source Dropdown will appear. Choose your custom connector from the selection.
+5. Save the dataset.
+6. Find the dataset that you just added in the table.
+7. Open the dataset's row menu and click "View Data Connector".
+8. You should then see the logs being recorded by the JavaScript from the connector.
+
+![Data Connector Logs](../img/test_data_connector_js.png)

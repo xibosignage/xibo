@@ -107,10 +107,17 @@ public function addMetric(string $id, string $name): self;
 public function addValues(string $inputType, array $values): self;
 ```
 
-Below is a step-by-step implementation guide for providing data connector JavaScript via the connector in Xibo-CMS:
+Below is a step-by-step implementation guide for providing schedule criteria via a custom connector:
 
 #### Step 1 - Create Custom Connector
 Follow the documentation for creating a custom connector. You can find the detailed guide [here](https://xibosignage.com/docs/developer/extend/connectors).
+
+Be sure to enable it afterward:
+1. Go to Application
+2. Find your custom connector
+3. Click Configure
+4. Check the "Enabled?" checkbox
+5. Click Save
 
 #### Step 2 - Register Event Listener
 Connectors that want to provide schedule criteria must register a listener for the `ScheduleCriteriaRequestEvent`.
@@ -149,4 +156,4 @@ public function onScheduleCriteriaRequest(ScheduleCriteriaRequestInterface $even
 ```
 Then, it would be added to the form as shown below:
 
-![Data Connector Overview](../img/schedule_criteria_type_dropdown.png)
+![Schedule Criteria Form](../img/schedule_criteria_type_dropdown.png)
