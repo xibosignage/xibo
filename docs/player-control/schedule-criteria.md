@@ -50,7 +50,9 @@ xiboDC.setCriteria('GOAL', true, 30);
 ## Frequency
 Players may implement throttling on this function to maintain stability, please do not call it rapidly.
 
-# Providing Schedule Criteria via Connector
+---
+
+## Providing Schedule Criteria via Connector
 This guide explains how to provide schedule criteria via a connector. By implementing the `ScheduleCriteriaProviderInterface`, connectors can supply types, metrics, and values for scheduling conditions. This ensures that the criteria are displayed correctly in the Schedule Criteria Form, allowing users to configure scheduling conditions based on the specified criteria.
 
 ## Interface for Managing Schedule Criteria Types, Metrics, and Values
@@ -61,9 +63,8 @@ Allows the addition of types, metrics, and values in a chained manner:
  - Conclude with `addValues()` immediately after addMetric() to specify a set of values for the metric. Each metric can have one set of values.
  - You can chain another `addMetric()` right after addValues() to add another metric.
 
-The added criteria are then parsed and displayed in the Schedule Criteria Form, enabling users to configure scheduling conditions based on the specified types, metrics, and values.
+The added criteria are then parsed and displayed in the Schedule Criteria Form, enabling users to configure scheduling conditions based on the specified types, metrics, and values. The PHP methods below detail the implementation for adding new types, metrics, and values.
 
-## Methods
 ```php
 /**
  * Add a new type to the criteria.
@@ -106,12 +107,12 @@ public function addMetric(string $id, string $name): self;
 public function addValues(string $inputType, array $values): self;
 ```
 
-## Step-by-Step Implementation Guide
+Below is a step-by-step implementation guide for providing data connector JavaScript via the connector in Xibo-CMS:
 
-### Step 1 - Create a Custom Connector
+#### Step 1 - Create Custom Connector
 Follow the documentation for creating a custom connector. You can find the detailed guide [here](https://xibosignage.com/docs/developer/extend/connectors).
 
-### Step 2 - Register the Event Listener
+#### Step 2 - Register Event Listener
 Connectors that want to provide schedule criteria must register a listener for the `ScheduleCriteriaRequestEvent`.
 
 ```php
@@ -123,7 +124,7 @@ public function registerWithDispatcher(EventDispatcherInterface $dispatcher): Co
     return $this;
 }
 ```
-### Step 3 - Implement the Event Handler
+#### Step 3 - Implement Event Handler
 Implement the method that will handle the ScheduleCriteriaRequestEvent. This method will add types, metrics, and values
 ```php
 use Xibo\Event\ScheduleCriteriaRequestInterface;
