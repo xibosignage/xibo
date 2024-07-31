@@ -39,6 +39,9 @@ The 4.0 CMS introduced 2 more
  - Get Dependency
  - Get Data
 
+The 4.1 CMS introduced 1 more
+ - Get Weather
+
 The starred services usually communicate outside the collection interval because they are driven be events that occur during normal running of the player.
 
 
@@ -354,6 +357,8 @@ These downloads will always be for media files, HTTP and the path a URL.
 
 ### GetFile
 
+If the CMS supports SendFile and/or a CDN, it will not be necessary to call this method as all required files will have a HTTP download link, which is preferred.
+
 The `GetFile` method is used to request a chunk (part) of a specific file id. This file **must** have been present in the `RequiredFiles` return otherwise it will not be served.
 
 The `chunkSize` is left to the implementer and should be suitable for the type of network the Player is installed on. It should be noted that the smaller the `chunkSize`, the more I/O load there will be on the CMS.
@@ -365,10 +370,30 @@ It takes the following parameters:
  - fileId: The ID of the file being downloaded.
  - fileType: The type of the file being downloaded.
  - chunkOffset: The offset for the current file chunk being requested. Starts as 0.
- - chunkSize: The size for the current file chunk.
+ - chuckSize: The size for the current file chunk.
 
 It returns base64 encoded binary data representing the requested file, offset and size. The Player is responsible for reassembling the file and checking the MD5 of the completed file against the one provided in `RequiredFiles`.
 
+**Note**: there is a typo in the "chuckSize" parameter, please provide the parameter as named here.
+
+### GetDependency
+
+If the CMS supports SendFile and/or a CDN, it will not be necessary to call this method as all required files will have a HTTP download link, which is preferred.
+
+The `GetDependency` method is used to request a chunk of a specific dependency. This dependency **must** have been present in the `RequiredFiles` return otherwise it will not be served.
+
+The `chunkSize` is left to the implementer and should be suitable for the type of network the Player is installed on. It should be noted that the smaller the `chunkSize`, the more I/O load there will be on the CMS.
+
+It takes the following parameters:
+
+- serverKey
+- hardwareKey
+- fileId: The ID of the file being downloaded.
+- fileType: The type of the file being downloaded.
+- chunkOffset: The offset for the current file chunk being requested. Starts as 0.
+- chunkSize: The size for the current file chunk.
+
+It returns base64 encoded binary data representing the requested file, offset and size. The Player is responsible for reassembling the file and checking the MD5 of the completed file against the one provided in `RequiredFiles`.
 
 
 ### GetResource
@@ -377,7 +402,27 @@ The `GetResource` method is used to request the HTML representation of a media i
 
 The Layout XLF determines when a resource file should be loaded or when a native component is needed.
 
+### GetWeather
 
+The `GetWeather` method is used to request a JSON representation of the current weather conditions for the display's latitude/longitude. This method should only be called if there are active weather based schedule criteria.
+
+The JSON response should be JSON decoded, after which it will be an object with the following structure. The properties will match directly to schedule criteria.
+
+```json
+{
+ "weather_condition": "string",
+ "temperature_imperial": 0,
+ "apparent_temperature_imperial": 0,
+ "temperature_metric": 0,
+ "apparent_temperature_metric": 0,
+ "humidity": 0,
+ "pressure": 0,
+ "wind_speed": 0,
+ "wind_bearing": 0,
+ "wind_direction": "string",
+ "visibility": "string"
+}
+```
 
 ### MediaInventory
 
@@ -592,7 +637,7 @@ It takes the following parameters:
 
 The structure for Log XML is as follows:
 
-``` xml
+```xml
 <logs>
 	<log date="Y-m-d H:i:s" category="">Message</log>
 </logs>
@@ -600,16 +645,16 @@ The structure for Log XML is as follows:
 
 or it can provide more information
 
-``` xml
+```xml
 <logs>
     <log date="Y-m-d H:i:s" category="">
         <type>type</type>
-        <type>thread</type>
-        <type>method</type>
-        <type>message</type>
-        <type>scheduleID</type>
-        <type>layoutID</type>
-        <type>mediaID</type>
+        <thread>thread</thread>
+        <method>method</method>
+        <message>message</message>
+        <scheduleID>scheduleID</scheduleID>
+        <layoutID>layoutID</layoutID>
+        <mediaID>mediaID</mediaID>
     </log>
 </logs>
 ```
@@ -621,7 +666,41 @@ or it can provide more information
  - method (optional): The method.
  - thread (optional): The Thread that the log message executed on.
 
+#### Display Alerts
+**Since CMS 4.1 and later** displays have been able to submit alerts to the CMS via the SubmitLog method. Alerts represent interesting events occurring on the media player, 
+such as the network going offline, application restarts, memory alerts, etc.
 
+These are submitted by setting the category attribute to `category="event"`.
+
+The following format is expected for alerts:
+
+```xml
+<logs>
+    <log date="Y-m-d H:i:s" category="event">
+        <eventType>eventType</eventType>
+        <alertType>alertType</alertType>
+        <refId>refId</refId>
+        <message>message</message>
+    </log>
+</logs>
+```
+
+ - date: The local date, ISO formatted
+ - category: `event`
+ - eventType: A string representing one of the events (see below)
+ - alertType: This should either be `both`, `start` or `end` to represent whether the alert is a point in time, the start of an alert or the end of an alert
+ - refId: If the alertType is start an optional refId can be provided to indicate an instance of an alert. The corresponding refId is provided with the end alert to close it
+ - message: A user friendly message describing the alert
+
+Event Types:
+ - Display Up/down
+ - App Start
+ - Power Cycle
+ - Network Cycle
+ - TV Monitoring
+ - Player Fault
+ - Command
+ - Other
 
 ### SubmitStats
 
@@ -643,9 +722,9 @@ It takes the following parameters:
 
 The structure for Stat XML is as follows:
 
-``` xml
+```xml
 <stats>
-	<stat type="" fromdt="" todt="" scheduleid="" layoutid="" mediaid="" duration=0 count=1></stat>
+	<stat type="" fromdt="" todt="" scheduleid="" layoutid="" mediaid="" duration="0" count="1"></stat>
 </stats>
 ```
 
