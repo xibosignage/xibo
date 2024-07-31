@@ -670,13 +670,13 @@ or it can provide more information
 **Since CMS 4.1 and later** displays have been able to submit alerts to the CMS via the SubmitLog method. Alerts represent interesting events occurring on the media player, 
 such as the network going offline, application restarts, memory alerts, etc.
 
-These are submitted by setting the category attribute to `category="alert"`.
+These are submitted by setting the category attribute to `category="event"`.
 
 The following format is expected for alerts:
 
 ```xml
 <logs>
-    <log date="Y-m-d H:i:s" category="alert">
+    <log date="Y-m-d H:i:s" category="event">
         <eventType>eventType</eventType>
         <alertType>alertType</alertType>
         <refId>refId</refId>
@@ -686,7 +686,7 @@ The following format is expected for alerts:
 ```
 
  - date: The local date, ISO formatted
- - category: `alert`
+ - category: `event`
  - eventType: A string representing one of the events (see below)
  - alertType: This should either be `both`, `start` or `end` to represent whether the alert is a point in time, the start of an alert or the end of an alert
  - refId: If the alertType is start an optional refId can be provided to indicate an instance of an alert. The corresponding refId is provided with the end alert to close it
