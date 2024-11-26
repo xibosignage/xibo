@@ -3,6 +3,7 @@ nav: "extend"
 slug: "extend/custom-display-profiles"
 alias: "custom-display-profiles"
 title: "Create Custom Display Profiles"
+excerpt: "This document will help you create a custom display profile to extend the options available in core CMS."
 ---
 
 # Introduction

@@ -2,6 +2,7 @@
 nav: "creating-a-player"
 slug: "creating-a-player/rendering"
 title: "Rendering - Creating a Player"
+excerpt: "The Media node in the XLF attempts to tell the Player how it should be played using the type and render attributes."
 ---
 
 # Rendering

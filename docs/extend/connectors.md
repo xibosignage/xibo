@@ -2,6 +2,7 @@
 nav: "extend"
 slug: "extend/connectors"
 title: "Connectors - Extend Xibo"
+excerpt: "Connectors allow developers to easily hook into the various events raised by Xibo’s event system. In v4 they will also be able to provide data for widgets."
 ---
 
 # Connectors

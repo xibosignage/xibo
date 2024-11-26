@@ -2,6 +2,7 @@
 nav: "widgets"
 slug: "widgets/xml-definitions"
 title: "Creating a Module - XML definitions"
+excerpt: "Detailed information on what XML definitions are available when designing a module or template"
 ---
 
 # XML definitions

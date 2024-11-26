@@ -2,6 +2,7 @@
 nav: "player-control"
 slug: "player-control/webhooks"
 title: "Webhooks - Player Control"
+excerpt: "Using the interactive control library it is possible to send a web hook to the Player."
 ---
 
 # Webhooks

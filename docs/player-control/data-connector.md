@@ -2,6 +2,7 @@
 nav: "player-control"
 slug: "player-control/data-connector"
 title: "Data Connectors"
+excerpt: "Data Connectors are defined in the CMS attached to a DataSet being marked as “real time”. Real time DataSets can be scheduled to players via the Schedule page."
 ---
 
 # Data Connectors

@@ -2,6 +2,7 @@
 nav: "player-control"
 slug: "player-control/getting-player-information-using-javascript"
 title: "Player Info - Player Control"
+excerpt: "The Embedded, Package HTML and Web Page Widgets, as well as custom Widgets allow HTML, CSS and JavaScript to be embedded into the Player."
 ---
 
 # Player Info

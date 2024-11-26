@@ -3,6 +3,7 @@ nav: "extend"
 slug: "extend/index"
 title: "Extend Xibo"
 alias: "extending-the-xibo-platform"
+excerpt: "This section primarily focuses on leveraging the tools provided to create custom extensions to the platform"
 ---
 
 # Extending Xibo

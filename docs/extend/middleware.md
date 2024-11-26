@@ -3,6 +3,7 @@ nav: "extend"
 slug: "extend/middleware"
 alias: "custom-middleware"
 title: "Middleware - Extend Xibo"
+excerpt: "Middleware surrounds the Slim application like an onion and is executed before and after the main request in LIFO order."
 ---
 
 # Middleware
