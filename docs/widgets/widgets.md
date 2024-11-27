@@ -3,6 +3,7 @@ nav: "widgets"
 slug: "widgets/index"
 title: "Widgets"
 alias: "modules-and-widgets"
+excerpt: "Widgets are a core component of Xibo and are used to display content on a Layout or in a Playlist."
 ---
 
 # Widgets

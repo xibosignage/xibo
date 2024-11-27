@@ -2,6 +2,7 @@
 nav: "creating-a-player"
 slug: "creating-a-player/proof-of-play"
 title: "Proof of Play - Creating a Player"
+excerpt: "Proof of Play statistics are records collected by the Player and transmitted to the CMS which records when an item has been played by the Player."
 ---
 
 # Proof of Play

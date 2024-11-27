@@ -2,6 +2,7 @@
 nav: "widgets"
 slug: "widgets/package-html"
 title: "HTML Package - Widgets"
+excerpt: "Package HTML Widgets are uploaded to Xibo’s Library and assigned to one or more Layouts/Playlists."
 ---
 
 # HTML Package

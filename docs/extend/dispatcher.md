@@ -3,6 +3,7 @@ nav: "extend"
 slug: "extend/dispatcher"
 alias: "using-the-event-dispatcher"
 title: "Event Dispatcher - Extend Xibo"
+excerpt: "This section will discuss the CMS event dispatcher, which can be used in Custom Middleware / Modules to intercept various core events raised by the CMS."
 ---
 
 # Event Dispatcher

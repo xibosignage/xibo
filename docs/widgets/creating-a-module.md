@@ -3,6 +3,7 @@ nav: "widgets"
 slug: "widgets/creating-a-module"
 alias: "modules-and-widgets"
 title: "Creating a Module - Widgets"
+excerpt: "Module is Xibo’s name for the logic which sits behind a Widget. Users create widgets, developers create modules."
 ---
 
 # Creating a Module

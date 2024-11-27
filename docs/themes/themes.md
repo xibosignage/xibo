@@ -3,6 +3,7 @@ nav: "themes"
 slug: "themes/index"
 title: "Themes"
 alias: "custom-theme-development"
+excerpt: "The CMS has a theme system which allows a developer to customise the look and feel of the application by creating a theme and adding it to the web/theme/custom folder."
 ---
 
 # Themes

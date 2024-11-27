@@ -3,6 +3,7 @@ nav: "extend"
 slug: "extend/tasks"
 alias: "recurring-tasks"
 title: "Tasks - Extend Xibo"
+excerpt: "The CMS will look in the /custom folder for any file ending in .task, these files will be loaded into the Task Add form for deployment on the CMS."
 ---
 
 # Tasks

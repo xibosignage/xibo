@@ -3,6 +3,7 @@ nav: "creating-a-player"
 slug: "creating-a-player/index"
 title: "Creating a Player"
 alias: "player-api-overview"
+excerpt: "If you’re here because you want to contribute to the Windows or Linux player development, then great and welcome! If not, you don't need to create your own player."
 ---
 
 # Creating a player

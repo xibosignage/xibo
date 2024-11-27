@@ -2,6 +2,7 @@
 nav: "player-control"
 slug: "player-control/schedule-criteria"
 title: "Schedule Criteria"
+excerpt: "Schedule Criteria are a set of metrics set on the media player which influence the active schedule loop."
 ---
 
 # Schedule Criteria

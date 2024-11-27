@@ -3,6 +3,7 @@ nav: "extend"
 slug: "extend/events-in-modules"
 alias: "using-events-in-custom-widgets-to-alter-the-xlf-file"
 title: "Events in a Custom Widget - Extend Xibo"
+excerpt: "Xibo includes a powerful event mechanism which allows for custom code to hook into system events and make changes to objects before they are finalised."
 ---
 
 # Using events in a Custom Widget

@@ -2,6 +2,7 @@
 nav: "widgets"
 slug: "widgets/upgrading-v4"
 title: "Upgrading to v4 - Widgets"
+excerpt: "Xibo v4 has redesigned the widget system to make it simpler to use and more powerful. If you've written a custom Module for CMS version 3.x, you will need to make several code changes to make it work in CMS version 4."
 ---
 
 # Upgrading to v4

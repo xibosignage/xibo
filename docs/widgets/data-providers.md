@@ -2,6 +2,7 @@
 nav: "widgets"
 slug: "widgets/data-providers"
 title: "Creating a Module - Data Providers"
+excerpt: "If you are making a new module that has data then this data will need to be requested/parsed and made available to the widget."
 ---
 
 # Providing Data

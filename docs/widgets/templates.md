@@ -2,6 +2,7 @@
 nav: "widgets"
 slug: "widgets/templates"
 title: "Module Templates - Widgets"
+excerpt: "A template is the object used to represent an element, stencil (element group) or static template; used for Data Widgets."
 ---
 
 # Module Templates

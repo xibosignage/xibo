@@ -3,6 +3,7 @@ nav: "extend"
 slug: "extend/architecture"
 alias: "application-architecture"
 title: "Architecture - Extend Xibo"
+excerpt: "Xibo is a client server application at it’s heart. It has a central content management system and one or more Player applications connecting to it."
 ---
 
 # Application Architecture

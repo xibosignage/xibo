@@ -2,6 +2,7 @@
 nav: "player-control"
 slug: "player-control/index"
 title: "Player Control"
+excerpt: "Xibo has several tools available to connect displays to their environment and to each other. Interactivity, Real time data, & Schedule Criteria..."
 ---
 
 # Player Control

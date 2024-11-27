@@ -3,6 +3,7 @@ nav: "cms-api"
 slug: "cms-api/auth"
 alias: "cms-api-overview"
 title: "Authentication - Integrate with Xibo"
+excerpt: "Securing the CMS is of utmost importance and the API is secured behind an oAuth resource server which requires a valid access_token to be provided before access will be granted."
 ---
 
 

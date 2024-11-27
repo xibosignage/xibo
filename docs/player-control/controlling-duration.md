@@ -2,6 +2,7 @@
 nav: "player-control"
 slug: "player-control/controlling-duration"
 title: "Controlling Widget Duration - Player Control"
+excerpt: "Using the interactive control library it is possible to expire, extend or set the duration of any Widget on the current Layout."
 ---
 
 # Controlling Widget Duration
