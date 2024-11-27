@@ -2,6 +2,7 @@
 nav: "cms-api"
 slug: "cms-api/making-requests"
 title: "Making Requests - Integrate with Xibo"
+excerpt: "This section deals with general information related to making requests."
 ---
 
 # Making Requests

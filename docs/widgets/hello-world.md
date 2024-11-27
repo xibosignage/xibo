@@ -3,6 +3,7 @@ nav: "widgets"
 slug: "widgets/hello-world"
 alias: "modules-and-widgets"
 title: "Hello World - Widgets"
+excerpt: "This is a super simple example of Xibo’s module system in action. If you copy this code into your Xibo v4 CMS installation, you will be able to add a simple message to your Layouts."
 ---
 
 # Examples

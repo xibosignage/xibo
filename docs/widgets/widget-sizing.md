@@ -3,6 +3,7 @@ nav: "widgets"
 slug: "widgets/widget-sizing"
 alias: "widget-sizing-how-does-it-work"
 title: "Widget Sizing - Widgets"
+excerpt: "Most Widgets in Xibo scale themselves according to their containing Region's dimensions, but there are some exceptions and some Widgets which take special extra measures to get themselves just right."
 ---
 
 # Widget Sizing

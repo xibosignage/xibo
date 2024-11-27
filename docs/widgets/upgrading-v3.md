@@ -3,6 +3,7 @@ nav: "widgets"
 slug: "widgets/upgrading-v3"
 alias: "upgrading-your-custom-module-to-cms-version-3"
 title: "Upgrading to v3 - Widgets"
+excerpt: "If you've written a custom Module for CMS version 2.x, you will need to make several code changes to make it work and look correct in CMS version 3."
 ---
 
 # Upgrading to v3

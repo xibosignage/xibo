@@ -2,6 +2,7 @@
 nav: "creating-a-player"
 slug: "creating-a-player/xmds"
 title: "Xibo Media Distribution Service - Creating a Player"
+excerpt: "Xibo Media Distribution Service (XMDS) is a SOAP API published by the CMS and consumed by the Player applications"
 ---
 
 # XMDS

@@ -2,6 +2,7 @@
 nav: "widgets"
 slug: "widgets/embedded"
 title: "Embedded - Widgets"
+excerpt: "Embedded Widgets are configured in the Layout/Playlist Designer directly in the CMS user interface."
 ---
 
 # Embedded

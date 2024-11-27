@@ -3,6 +3,7 @@ nav: "player-control"
 slug: "player-control/software-triggers"
 alias: "software-triggers-using-the-api"
 title: "Software Triggers through XMR - Player Control"
+excerpt: "Xibo supports dynamic signage through the use of software triggers."
 ---
 
 # Software Triggers through XMR

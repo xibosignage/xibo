@@ -2,6 +2,7 @@
 nav: "cms-api"
 slug: "cms-api/adding-widgets"
 title: "Adding Widgets - Integrate with Xibo"
+excerpt: "A widget is added to a Layout or Playlist in 4 steps with Xibo Integration. Please note, widgets and data widgets with static templates can be added via the API."
 ---
 
 # Adding Widgets

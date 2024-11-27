@@ -3,6 +3,7 @@ nav: "cms-api"
 slug: "cms-api/index"
 title: "Integrating with Xibo"
 alias: "integrating-with-xibo"
+excerpt: "Integrating applications opens the door to many exciting possibilities, and we’ve designed the Xibo CMS from first principles with maximum support for integration."
 ---
 
 # Integrating with Xibo

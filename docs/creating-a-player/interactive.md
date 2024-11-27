@@ -2,7 +2,7 @@
 nav: "creating-a-player"
 slug: "creating-a-player/interactive"
 title: "Interactive - Creating a Player"
-
+excerpt: "The interactive feature is available from Xibo v3 and all v3 players should support interactivity where practical. Besides touch/click, it also includes web hooks."
 ---
 
 # Interactive

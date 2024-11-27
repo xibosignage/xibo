@@ -2,6 +2,7 @@
 nav: "index"
 slug: "index"
 title: "Introduction"
+excerpt: "This developer documentation aims to provide guidance on all parts of the platform which have technical elements."
 ---
 
 # Developer Documentation

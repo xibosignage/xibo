@@ -3,6 +3,7 @@ nav: "creating-a-player"
 slug: "creating-a-player/xlf"
 alias: "xibo-layout-format"
 title: "Xibo Layout Format - Creating a Player"
+excerpt: "XLF is a standard XML document used to completely describe a Layout and its resources."
 ---
 
 # Xibo Layout Format
