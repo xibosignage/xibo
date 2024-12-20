@@ -7,14 +7,24 @@ excerpt: "Schedule Criteria are a set of metrics set on the media player which i
 
 # Schedule Criteria
 
-{tip}This feature will be included in Xibo v4.1 which is due to release in the first half of 2024.{/tip}
-
-Schedule Criteria are a set of metrics set on the media player which influence the active schedule loop. Scheduled events in the CMS can have criteria configured against them, so that the event only becomes active when the criteria on the media player match.
+Schedule Criteria are a set of metrics set on the media player which influence the active schedule loop. Scheduled events in the CMS can have criteria configured against them, so that the event only becomes active when the criteria on the media player matches.
 
 For example a metric of "PRODUCT_LIFTED" could be set on the media player via API which activated a new scheduled layout in the loop to show information regarding the lifted product.
 
-## API call
-A POST request can be made to the player web server: `POST /criteria` containing a JSON array of criteria to add/update on the player.
+There are several ways to inform a media player which criteria are currently active:
+
+ - Local Player API (Push criteria into the player)
+ - Data Connector (Pull criteria into the player)
+ - XMR (Push criteria into the player via the CMS)
+
+Whenever new schedule criteria are set, the Xibo player app will reassess its schedule loop and all events criteria evaluated to build a new schedule loop.
+
+The schedule events created in the CMS describe all possibilities, which are then assessed by the criteria set on each individual player when creating a schedule loop.
+
+## Local Player API call
+This is suitable if the system setting the criteria is local to the player (i.e. on device) or on the same LAN with a network route to the player.
+
+A POST request can be made to the player web server: `POST http://localhost:9696/criteria` containing a JSON array of criteria to add/update on the player.
 
 ```json
 [
@@ -26,8 +36,16 @@ A POST request can be made to the player web server: `POST /criteria` containing
 ]
 ```
 
+The metric and value are assessed against any criteria on schedule events for that display.
+
+If you are making a WAN connection (i.e. by IP address or hostname) ensure you have WAN access enabled in Display Settings as by default it is disabled.
+
+### Frequency
+Players may implement throttling on this function to maintain stability, please do not call it rapidly.
+
+
 ## Data Connector
-Data Connectors can also set schedule criteria. Setting new schedule criteria will cause the schedule to be reassessed and all events criteria evaluated to build a new schedule loop.
+Data Connectors can also set schedule criteria. This is useful when you wish to pull criteria updates from another system.
 
 `xiboDC.setCriteria(metric, value, ttl)` is used to set criteria, with the following method signature.
 
@@ -48,10 +66,14 @@ Example:
 xiboDC.setCriteria('GOAL', true, 30);
 ```
 
-## Frequency
-Players may implement throttling on this function to maintain stability, please do not call it rapidly.
+## XMR
+The CMS API has a request to push criteria updates since 4.2. The request is documented in the CMS API documentation.
 
----
+This is useful if the system responsible for setting criteria has no direct network route to the player, but still wants to push data to the player.
+
+
+# Adding criteria types to the User Interface
+The CMS comes with two criteria types; Weather and Custom. When interfacing with another system it may be desirable to give users a pre-defined list of criteria metrics and values to choose from whilst scheduling. This can be achieved using a Connector.
 
 ## Providing Schedule Criteria via Connector
 This guide explains how to provide schedule criteria via a connector. By implementing the `ScheduleCriteriaProviderInterface`, connectors can supply types, metrics, and values for scheduling conditions. This ensures that the criteria are displayed correctly in the Schedule Criteria Form, allowing users to configure scheduling conditions based on the specified criteria.
@@ -132,8 +154,10 @@ public function registerWithDispatcher(EventDispatcherInterface $dispatcher): Co
     return $this;
 }
 ```
+
 #### Step 3 - Implement Event Handler
 Implement the method that will handle the ScheduleCriteriaRequestEvent. This method will add types, metrics, and values
+
 ```php
 use Xibo\Event\ScheduleCriteriaRequestInterface;
 
@@ -155,6 +179,7 @@ public function onScheduleCriteriaRequest(ScheduleCriteriaRequestInterface $even
             ->addValues('dropdown', ['Advisory' => 'Advisory', 'Watch' => 'Watch', 'Warning' => 'Warning']);
 }
 ```
+
 Then, it would be added to the form as shown below:
 
 ![Schedule Criteria Form](../img/schedule_criteria_type_dropdown.png)
