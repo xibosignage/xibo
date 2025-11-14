@@ -208,9 +208,10 @@ Starting in Xibo `v3` `<action>`s can be children of the `<layout>`, `<region>` 
 
 They have the following attributes:
 
-- `id`: the actions id
-- `actionType`: the type of action
-- `triggerType`: either `touch` or `webhook`
+- `id`: The actions id.
+- `actionType`: The type of action.
+- `triggerType`: Either `touch`, `webhook` or `keyPress`.
+- `triggerCode`: The code to be used for `webhook` or the key code for `keyPress`.
 - `source`: The source of the action, either `layout`, `region` or `widget`. This will be the same node as the action is a child of.
 - `sourceId`: The id of the source.
 - `target`: The target of the action, either `region` or `screen`.
