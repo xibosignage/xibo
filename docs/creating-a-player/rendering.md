@@ -132,7 +132,7 @@ The Shell Command widget exists to execute Shell Commands on a Layout. It provid
  - windowsCommand
  - linuxCommand
 
-Pre-defined commands can be used which have been configured as per the [command functionality](displays_commands.html). The player should inspect the command configuration
+Pre-defined commands can be used which have been configured as per the [command functionality](/manual/en/displays_command_functionality). The player should inspect the command configuration
 it received during the [`RegisterDisplay`](xmds.html#RegisterDisplay) XMDS call for the command string to execute.
 
 An adhoc command does not have a commandCode and instead provides a windows/linux Command to execute. It is the players responsibility to sanitize and execute these commands in a Shell.
