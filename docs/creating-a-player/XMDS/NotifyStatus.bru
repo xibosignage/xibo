@@ -1,0 +1,35 @@
+meta {
+  name: NotifyStatus
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{url}}/xmds.php?v={{version}}
+  body: xml
+  auth: none
+}
+
+params:query {
+  v: {{version}}
+}
+
+headers {
+  Content-Type: text/xml
+}
+
+body:xml {
+  <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="urn:xmds" xmlns:types="urn:xmds/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+      <tns:NotifyStatus>
+        <serverKey xsi:type="xsd:string">{{serverKey}}</serverKey>
+        <hardwareKey xsi:type="xsd:string">{{hardwareKey}}</hardwareKey>
+        <status xsi:type-="xsd:string">{"width":1280, "height":720, "timeZone":"Asia/Bangkok", "latitude":13.7248936, "longitude":100.4930267}</status>
+      </tns:NotifyStatus>
+    </soap:Body>
+  </soap:Envelope>
+}
+
+docs {
+  Schedule request for Display "gted"
+}

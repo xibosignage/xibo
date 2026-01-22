@@ -1,0 +1,18 @@
+meta {
+  name: Local Player API
+  type: http
+  seq: 13
+}
+
+post {
+  url: http://192.168.86.66:9696/trigger
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "id": 0,
+      "triggerCode": "n2w"
+  }
+}

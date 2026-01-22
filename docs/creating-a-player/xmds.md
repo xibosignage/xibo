@@ -232,7 +232,7 @@ The CMS will use the pub key to encrypt any messages sent to the Player on the X
 
 Messages sent through XMR are encrypted using `openssl_seal` and should be decrypted accordingly.
 
-Please see [here](software-triggers-using-the-api) for more information.
+Please see [here](../player-control/software-triggers-using-the-api) for more information.
 
 
 #### Licence Result
