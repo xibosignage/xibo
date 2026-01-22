@@ -9,7 +9,7 @@ excerpt: "This developer documentation aims to provide guidance on all parts of 
 
 The Xibo Platform offers various opportunities for a developer or designer to be involved in the Digital Signage creative process, and often adding a technical element to your network really makes it come alive. This developer documentation aims to provide guidance on all parts of the platform which have technical elements.
 
-> This documentation is written for a technical audience. If you are looking for a [user manual](https://xibo.org.uk/manual/en/), or [documentation for administrators](../setup), please use the links provided.
+> This documentation is written for a technical audience. If you are looking for a [user manual](https://account.xibosignage.com/manual/en/), or [documentation for administrators](../setup), please use the links provided.
 
 These documents are ordered such that more common activities are discussed first, however which parts you need will depend on what you want to achieve; refer to the below overview.
 

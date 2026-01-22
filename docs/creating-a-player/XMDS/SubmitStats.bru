@@ -1,0 +1,34 @@
+meta {
+  name: SubmitStats
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{url}}/xmds.php?v={{version}}
+  body: xml
+  auth: none
+}
+
+params:query {
+  v: {{version}}
+}
+
+headers {
+  Content-Type: text/xml
+}
+
+body:xml {
+  <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="urn:xmds" xmlns:types="urn:xmds/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+      <tns:SubmitStats>
+        <serverKey xsi:type="xsd:string">{{serverKey}}</serverKey>
+        <hardwareKey xsi:type="xsd:string">{{hardwareKey}}</hardwareKey>
+        <statXml xsi:type-="xsd:string">&lt;records&gt;
+      &lt;stat fromdt=&quot;2022-11-02 00:00:00&quot; todt=&quot;2022-11-02 00:05:00&quot; type=&quot;layout&quot; scheduleid=&quot;48&quot; layoutid=&quot;133&quot; mediaid=&quot;null&quot; tag=&quot;&quot; count=&quot;250&quot; /&gt;
+  &lt;/records&gt;
+        </statXml>
+      </tns:SubmitStats>
+    </soap:Body>
+  </soap:Envelope>
+}
