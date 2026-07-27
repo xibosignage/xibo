@@ -1,24 +1,22 @@
 [![Xibo - Digital Signage](xibologo.png)](https://xibosignage.com)
 
-[![CMS downloads](https://img.shields.io/github/downloads/xibosignage/xibo-cms/total.svg?label=CMS%20Downloads)]()
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="xibologo.png">
+  <source media="(prefers-color-scheme: light)" srcset="xibologo-blue.png">
+  <img alt="Xibo Logo" src="xibologo-blue.png" width="300">
+</picture>
 
-[![Windows Player](https://img.shields.io/github/downloads/xibosignage/xibo-dotnetclient/total.svg?label=Windows%20Player%20Downloads)]()
-
-
-## About Xibo
-Xibo is a powerful Open Source Digital Signage platform with a web content management system and Windows display player
-software. We have commercial player options for Android, LG webOS and Samsung Tizen, as well as CMS hosting and support.
+Xibo is a complete, fully featured digital signage CMS. It is a robust platform used in production by organisations of every size, fully 
+capable of powering real digital signage networks at scale.  Xibo does have a selection of commercial features and capabilities which 
+are not open source, such as compatibility with selected media player hardware.
 
 See [https://xibosignage.com](https://xibosignage.com) for more information.
-
-Our first open source release 1.0.0-rc1 landed in 2009, and we're committed to keeping everything you need to run a
-digital signage network, or single screen, open source and free to use.
 
 ## Licence
 
 [![Licence](https://img.shields.io/github/license/xibosignage/xibo-cms)]()
 
-Copyright (C) 2006-2023 Xibo Signage Ltd and Contributors.
+Copyright (C) 2006-2026 Xibo Signage Ltd
 
 Xibo is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public
 License as published by the Free Software Foundation, either version 3 of the License, or any later version.
@@ -29,12 +27,12 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero Gene
 You should have received a copy of the GNU Affero General Public License along with Xibo. 
 If not, see <http://www.gnu.org/licenses/>.
 
-## Documentation
-We have 3 types of documentation available to suit the audience: 
+## Our promise
+Xibo has always been an open source project at its heart. As our platform and community continue to grow, we want to formally
+ codify our ongoing commitment to open source in our [Open Source Promise](PROMISE.md).
 
- * User: https://xibosignage.com/manual/en/
- * Administrator: https://xibosignage.com/docs/setup/
- * Developer: https://xibosignage.com/docs/developer/ (or `docs/` if you're more comfortable with markdown)
+## Can I use the Xibo name/logo?
+Please see the following FAQ: https://community.xibo.org.uk/t/can-i-use-the-xibo-name-logo/4957.
 
 ## Community
 If you are looking for somewhere to discuss Xibo or ask about something that is not a **verified** bug, please head 
@@ -48,21 +46,17 @@ in their respective repositories.
 This software is split across several repositories which mirror the different software components.
 
 There is:
- - [Xibo](https://github.com/xibosignage/xibo) - Issues and developer documentation
+ - [Xibo](https://github.com/xibosignage/xibo) - Central repository
  - [Xibo Docker](https://github.com/xibosignage/xibo-docker) - docker containers for our content management system
  - [Xibo CMS](https://github.com/xibosignage/xibo-cms) - the content management system
- - [Xibo for Windows Player](https://github.com/xibosignage/xibo-dotnetclient) - the windows player
- - [Xibo for Linux](https://github.com/xibosignage/xibo-linux) - the linux player (we need help with this player)
- - [Xibo Interactive](https://github.com/xibosignage/xibo-interactive-control) - a player side library for interactive control
+ - [Linux/Windows Player Application](https://github.com/xibosignage/electron-player)
+ - [Windows Player App](https://github.com/xibosignage/xibo-dotnetclient) - the old windows player
  - [Xibo Message Relay - XMR](https://github.com/xibosignage/xibo-xmr) - Xibo Message Relay, a component of the CMS
- - [Xibo Support Library](https://github.com/xibosignage/support) - a small support library for doing common things in PHP
- - [Xibo Manual](https://github.com/xibosignage/xibo-manual) - the user manual
- - [PHP SDK for the CMS API](https://github.com/xibosignage/oauth2-xibo-cms) - league/oauth2 client for our CMS API
-
+ - [Xibo Layout Renderer - XLR](https://github.com/xibosignage/xibo-layout-renderer) - Xibo Layout Render, a component of the player apps
+ - [Xibo Communication Framework - XCF](https://github.com/xibosignage/xibo-communication-framework) - Xibo Communication Framework, a component of the player apps
 
 ## Contributing
-We would be delighted to accept contributions to the project - please refer to [CONTRIBUTING.md](CONTRIBUTING.md) 
-for further information.
+To find out how to contribute to Xibo, take a look at our Documentation: https://docs.xibosignage.com/developer/contributing-to-xibo.
 
 ## Sponsorship
 We've built commercial products and services on top of our open source project. If you want to support our work the
