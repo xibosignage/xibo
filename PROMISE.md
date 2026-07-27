@@ -1,3 +1,9 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="xibologo.png">
+  <source media="(prefers-color-scheme: light)" srcset="xibologo-blue.png">
+  <img alt="Xibo Logo" src="xibologo-blue.png" width="300">
+</picture>
+
 # The Xibo Open Source Promise
 
 Xibo has always been an open source project at its heart. As our platform and community continue to grow, we want to formally codify our ongoing commitment to open source.
