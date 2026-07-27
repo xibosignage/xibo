@@ -25,3 +25,39 @@ definition for the task. An example is shown below:
 ```
 
 This task would expect to be able to instantiate `\Xibo\Custom\CustomTask` at runtime.
+
+```php
+<?php
+
+namespace Xibo\Custom;
+
+use Xibo\XTR\TaskInterface;
+use Xibo\XTR\TaskTrait;
+
+class CustomTask implements TaskInterface
+{
+    use TaskTrait;
+
+    public function setFactories($container)
+    {
+        return $this;
+    }
+
+    public function run()
+    {
+        // Retrieve options set on registering task 
+        $option = $this->getOption('option1', 'defaultValue');
+
+        // Log level had to to be set to "Debug" to be shown in logs 
+        $this->log->debug('Runnig Custom Task with option1 ='. $option);
+
+        ...
+        $this->appendRunMessage('Task Completed');
+    }
+}
+```
+
+If you are running Xibo in development environment (i.e with CMS_DEV_MODE=true), Cron Task can be not running and Task could be executed with 
+```sh
+docker exec <container_id> php /var/www/cms/bin/run.php <task_id>
+```
