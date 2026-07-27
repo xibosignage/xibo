@@ -1,5 +1,3 @@
-[![Xibo - Digital Signage](xibologo.png)](https://xibosignage.com)
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="xibologo.png">
   <source media="(prefers-color-scheme: light)" srcset="xibologo-blue.png">
